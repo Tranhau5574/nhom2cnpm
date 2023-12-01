@@ -14,10 +14,7 @@ public interface IRoomRepository extends JpaRepository<Room,Integer> {
     Room findRoomById(Integer id);
 
     @Query("SELECT r FROM Room r WHERE r.id IN (SELECT s.room.id FROM Schedule s WHERE s.movie.id=:movieId AND " +
-            "s.startDate=:startDate AND s.startTime=:startTime)")
+            "s.startDate=:startDate)")
     List<Room> getRoomByMovieAndSchedule(@Param("movieId")   Integer movieId,
-                                         @Param("startDate") LocalDate startDate, 
-                                         @Param("startTime") LocalTime startTime);
-
-            
+                                         @Param("startDate") LocalDate startDate);
 }

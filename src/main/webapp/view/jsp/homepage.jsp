@@ -175,5 +175,30 @@
     <div>${movie.name} vcl</div>
     <img src="${movie.imgURL}" alt="Movie Image">
     <iframe width="560" height="315" src="${movie.trailerURL}" frameborder="0" allowfullscreen></iframe>
+    <div class="d-flex justify-content-between flex-wrap">
+        <c:forEach items="${movies}" var="movie">
+            <div class="card movie-item" style="width:300px">
+                <img class="card-img-top img-movie"
+                     src="${movie.imgURL}"
+                     alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">${movie.name}</h4>
+                    <p class="card-text">${movie.shortDescription}</p>
+                    <a href="/movie-details?movieId=${movie.id}" class="btn btn-outline-warning"
+                       style="margin-right:70px">Chi tiết</a>
+
+                        <%--Nếu chưa đăng nhập mà đã click vào nút mua vé thì trả về trang có nút có class btn-buy-ticket-not-signed-in để
+                        toggle cái form đăng nhập--%>
+                    <c:choose>
+                        <c:when test="${sessionScope.jwtResponse eq null}">
+                            <button class="btn btn-outline-danger btn-buy-ticket-not-signed-in">Mua vé</button>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/chooseDate?movieId=${movie.id}" class="btn btn-outline-danger">Mua vé</a>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+            </div>
+        </c:forEach>
 </body> 
 </html>
