@@ -1,8 +1,9 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-     <title>Trang đăng nhập</title> 
+     <title>Trang đăng ký</title> 
      <style>
         * {
             margin: 0;
@@ -101,27 +102,15 @@
         form .button input:hover{
             background: rgb(30, 160, 180);
         }
-        .wrapper form .signup-link{
-            text-align: center;
-            margin-top: 20px;
-            font-size: 17px;
-        }
-        .wrapper form .signup-link a{
-            color: rgb(30, 160, 180);
-            text-decoration: none;
-        }
-        form .signup-link a:hover{
-            text-decoration: underline;
-        }
      </style>
   </head>
   <body>
     <div class="container">
       <div class="wrapper">
         <div class="title">
-            <span>Đăng nhập</span>
+            <span>Đăng ký</span>
         </div>
-        <form action="/login" method="post">
+        <form action="/signup" method="post">
           <div class="row">
             <i class="fas fa-user"></i>
             <input type="text" name="username" placeholder="Tên đăng nhập" required>
@@ -130,16 +119,16 @@
             <i class="fas fa-lock"></i>
             <input type="password" name="password" placeholder="Mật khẩu" required>
           </div>
-          <div class="row button">
-            <input type="submit" value="Đăng nhập">
+          <div class="row">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="confirm-password" placeholder="Nhập lại mật khẩu" required>
           </div>
-          <div class="signup-link">
-            <a href="signup.jsp">Đăng ký ngay</a>
+          <div class="row button">
+            <input type="submit" value="Đăng ký">
           </div>
         </form>
       </div>
     </div>
 
   </body>
-
 </html>
