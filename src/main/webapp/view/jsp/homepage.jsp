@@ -162,7 +162,7 @@
 
     <!-- Call the JavaScript function -->
     <button onclick="greet()">Hello Button</button>
-
+    <jsp:include page="header.jsp"/>
     <div class = 'search-box d-flex justify-content-between'>
         <h2>Chọn Phim</h2>
         <form action="/" class="search-bar" method="post">

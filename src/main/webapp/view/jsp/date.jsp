@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
-    <title>Chọn lịch xem phim</title>
+    <title>Chọn ngày xem phim</title>
 </head>
 
 <body>
@@ -24,8 +24,8 @@
 <br><br><br>
 <div class="container">
 
-    <form action="room-selection" method="post">
-        <h2>Chọn lịch xem phim</h2>
+    <form action="/chooseDate" method="post">
+        <h2>Chọn ngày xem phim</h2>
         <br>
         <p>Chọn ngày xem phim (yyyy-MM-dd)</p>
         <select id="listDate" class="form-control form-control-lg" name="startDate" >
@@ -37,36 +37,11 @@
         </select>
         <br>
     </form>
+
 </div>
 <br><br><br><br><br><br><br>
+
 <jsp:include page="footer.jsp"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    function callAPI() {
-        console.log("da goi duoc api!")
-        $.ajax({
-            url: "https://cinema-be.herokuapp.com/api/schedule/start-times?movieId=${sessionScope.movieId}&branchId=${sessionScope.branchId}&startDate=" + $("#listDate").find(":selected").text().trim(),
-            type: 'GET',
-            headers: {"Authorization": "Bearer " +'${sessionScope.jwtResponse.accessToken}'},
-            success: function (data) {
-                console.log("data: "+data)
-                $("#listTimes").html("");
-                data.forEach(startTime => {
-                    $("#listTimes").append("<option value=" + '"' + startTime + '"' + ">" + startTime + "</option>")
-                });
-            },
-            error: function(error){
-                alert(error)
-            }
-        })
-    }
-    $(document).ready(function() {
-        $('#listDate').on('change', function() {
-            // alert( this.value ); // or $(this).val()
-            callAPI();
-        });
-    });
-</script>
 
 </body>
 
