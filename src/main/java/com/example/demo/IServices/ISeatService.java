@@ -2,8 +2,8 @@ package com.example.demo.IServices;
 
 import java.util.List;
 
-import com.example.demo.entities.Seat;
+import com.example.demo.DTOs.SeatDTO;
 
 public interface ISeatService {
-    List<Seat> getSeatsByScheduleId(Integer scheduleId);
+    List<SeatDTO> getSeatsByScheduleId(Integer scheduleId);
 }

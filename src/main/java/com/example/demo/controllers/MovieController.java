@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 
 @Controller
-@RequestMapping("movie-details")
+@RequestMapping("/movie-details")
 public class MovieController {
 
     @Autowired 

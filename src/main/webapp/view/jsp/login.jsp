@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
   <head>
@@ -36,6 +37,12 @@
             color: #fff;
             font-size: 30px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .wrapper .message{
+            color: #ff0000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -121,6 +128,7 @@
         <div class="title">
             <span>Đăng nhập</span>
         </div>
+        <div class="message"> ${message} </div>
         <form action="/login" method="post">
           <div class="row">
             <i class="fas fa-user"></i>

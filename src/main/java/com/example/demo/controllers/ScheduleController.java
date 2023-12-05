@@ -26,12 +26,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/chooseDate")
 public class ScheduleController {
     @Autowired
     ScheduleService scheduleService;
     
-    @RequestMapping(value = "/chooseDate", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/chooseDate", method = RequestMethod.GET)
     public String displayDatePage(@RequestParam Integer movieId, Model model, HttpServletRequest request){
         HttpSession session = request.getSession();
 
@@ -50,7 +49,7 @@ public class ScheduleController {
         return "date";
     }
 
-    @RequestMapping(value = "/chooseDate", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/chooseDate", method = RequestMethod.POST)
     public String displayTimePage(Model model, HttpServletRequest request){
         HttpSession session = request.getSession();
         Integer movieId = (Integer)session.getAttribute("movieId");

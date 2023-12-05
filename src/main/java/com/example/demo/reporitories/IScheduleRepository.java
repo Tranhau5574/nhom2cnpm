@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import com.example.demo.entities.Schedule;
 
 public interface IScheduleRepository extends JpaRepository<Schedule, Integer>{
+        
     @Query("SELECT DISTINCT s.startTime FROM Schedule s WHERE s.movie.id=:movieId" 
             + "AND s.startDate=:startDate")
     List<LocalTime> getStartTimeByMovie_IdAndStartDate(@Param("movieId") Integer movieId

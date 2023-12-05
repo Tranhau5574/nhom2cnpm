@@ -1,6 +1,8 @@
 package com.example.demo.security.configure;
 
 
+import static org.mockito.ArgumentMatchers.anyDouble;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,11 +30,6 @@ public class  SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public RestAuthenticationEntryPoint restServicesEntryPoint() {
-        return new RestAuthenticationEntryPoint();
-    }
-
-    @Bean
     public CustomAccessDeniedHandler customAccessDeniedHandler() {
         return new CustomAccessDeniedHandler();
     }
@@ -51,19 +48,21 @@ public class  SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/", "/login", "/register").permitAll()
-                .antMatchers("/api/**").hasRole("CLIENT")
-                .antMatchers("/api/**").hasRole("ADMIN")
+                .antMatchers("/", "/login", "/register", "/movie-details").permitAll()
+                .antMatchers("/user/**").hasRole("CLIENT")
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
-            .and()
+            .and()  
             .formLogin()
                 .loginPage("/login") // Specify the custom login page URL
-                // Specify the default success URL after login
-                .failureUrl("/login?error=true") // Specify the URL for login failure
+                .failureUrl("/login?error=1") // Specify the URL for login failure
                 .permitAll() // Allow everyone to access the login page
             .and()
             .logout()
                 .logoutSuccessUrl("/logout-success") // Specify the URL after successful logout
-                .permitAll(); // Allow everyone to access the logout URL
+                .permitAll() // Allow everyone to access the logout URL
+            .and()
+                .exceptionHandling()
+                .accessDeniedHandler(customAccessDeniedHandler());   //Access denied handler
     }
 }

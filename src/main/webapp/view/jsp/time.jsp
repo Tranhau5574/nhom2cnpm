@@ -24,7 +24,7 @@
 <br><br><br>
 <div class="container">
 
-    <form action="/room-selection" method="post">
+    <form action="/user" method="post">
         <h2>Chọn giờ xem phim</h2>
         <br>
         <p>Chọn giờ xem phim (HH:mm)</p>

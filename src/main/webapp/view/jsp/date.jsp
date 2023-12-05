@@ -24,7 +24,7 @@
 <br><br><br>
 <div class="container">
 
-    <form action="/chooseDate" method="post">
+    <form action="/user/chooseDate" method="post">
         <h2>Chọn ngày xem phim</h2>
         <br>
         <p>Chọn ngày xem phim (yyyy-MM-dd)</p>

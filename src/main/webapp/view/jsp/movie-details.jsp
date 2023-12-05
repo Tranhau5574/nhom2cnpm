@@ -32,7 +32,7 @@
     <br>
     <div style="display:flex">
         <div style="margin-right:50px">
-            <img src="${movie.smallImageURl}" alt="">
+            <img src="${movie.imgURL}" alt="">
             <%--Nếu chưa đăng nhập mà đã click vào nút mua vé thì trả về trang có nút có class btn-buy-ticket-not-signed-in để
                         toggle cái form đăng nhập--%>
             <c:choose>
@@ -40,7 +40,7 @@
                     <button  class="btn btn-danger btn-block btn-buy-ticket-not-signed-in">Mua vé</button>
                 </c:when>
                 <c:otherwise>
-                    <a href="chooseDate?movieId=${movie.id}" class="btn btn-danger btn-block">Mua Vé</a>
+                    <a href="/user/chooseDate?movieId=${movie.id}" class="btn btn-danger btn-block">Mua Vé</a>
                 </c:otherwise>
             </c:choose>
         </div>
