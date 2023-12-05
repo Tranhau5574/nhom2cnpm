@@ -17,7 +17,7 @@ public class MovieService implements IMovieService{
     IMovieRepository movieRepository;
 
     @Override
-    public Movie getMovieById(int id){
+    public Movie getMovieById( int id){
         return movieRepository.findMovieById(id);
     };
 
