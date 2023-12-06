@@ -28,7 +28,7 @@
         <h2>Chọn giờ xem phim</h2>
         <br>
         <p>Chọn giờ xem phim (HH:mm)</p>
-        <select id="listTimes" class="form-control form-control-lg" name="startTime">
+        <select id="listTimes" class="form-control form-control-lg" name="chosenTime">
             <c:forEach items="${listStartTimes}" var="startTime">
                 <option value="${startTime}">
                         ${startTime}

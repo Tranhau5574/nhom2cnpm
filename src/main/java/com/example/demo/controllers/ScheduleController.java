@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.example.demo.Services.MovieService;
 import com.example.demo.Services.ScheduleService;
 import com.example.demo.entities.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
-
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -22,10 +22,16 @@ import java.util.ArrayList;
 public class ScheduleController {
     @Autowired
     ScheduleService scheduleService;
+
+    @Autowired
+    MovieService movieService;
     
     @RequestMapping(value = "/user/chooseDate", method = RequestMethod.GET)
     public String displayDatePage(@RequestParam Integer movieId, Model model, HttpServletRequest request){
+
+        //Thêm movieId vào session để dùng sau
         HttpSession session = request.getSession();
+        session.setAttribute("movieId", movieId);
 
         // Để tạm ngày hôm nay
         LocalDate.now();
@@ -39,7 +45,6 @@ public class ScheduleController {
         }
 
         model.addAttribute("listDates",listDates);
-        model.addAttribute("user",new User());
         return "date";
     }
 
@@ -47,9 +52,11 @@ public class ScheduleController {
     public String displayTimePage(Model model, HttpServletRequest request){
         HttpSession session = request.getSession();
         Integer movieId = (Integer)session.getAttribute("movieId");
-        String startDate = request.getParameter("startDate");
+        String chosenDate = request.getParameter("chosentDate");
+        session.setAttribute("chosenDate", chosenDate);
 
-        List<String> listStartTimes = scheduleService.getStartTimes(movieId,LocalDate.parse(startDate));
+        List<String> listStartTimes = scheduleService.getStartTimes(
+                                      movieId,LocalDate.parse(chosenDate));
         model.addAttribute("listStartTimes", listStartTimes);
         return "time";
     }

@@ -28,7 +28,7 @@
         <h2>Chọn ngày xem phim</h2>
         <br>
         <p>Chọn ngày xem phim (yyyy-MM-dd)</p>
-        <select id="listDate" class="form-control form-control-lg" name="startDate" >
+        <select id="listDate" class="form-control form-control-lg" name="chosenDate" >
             <c:forEach items="${listDates}" var="date">
                 <option value="${date}">
                         ${date}

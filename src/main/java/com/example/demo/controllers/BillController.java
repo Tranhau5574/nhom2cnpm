@@ -11,6 +11,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.demo.Services.SeatService;
+import com.example.demo.entities.Schedule;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,7 +51,7 @@ public class BillController {
         model.addAttribute("listSeats", listSeatNames);
         
         // Lấy ra tổng tiền:
-        ScheduleDTO scheduleFromSession = (ScheduleDTO)session.getAttribute("schedule");
+        Schedule scheduleFromSession = (Schedule)session.getAttribute("chosenSchedule");
         Double totalAmount = scheduleFromSession.getPrice() * numberOfSelectedSeats;
         model.addAttribute("totalAmount",totalAmount);
 
@@ -65,25 +66,17 @@ public class BillController {
     @GetMapping
     public String createBill(HttpServletRequest request,Model model){
         HttpSession session = request.getSession();
-
-        // Đóng gói user id. schedule id và list id các ghế vào request gửi đi
-        BookingRequestDTO body = new BookingRequestDTO();
-        body.setUserId(jwtResponseDTO.getId());
-        ScheduleDTO scheduleFromSession = (ScheduleDTO)session.getAttribute("schedule");
-        body.setScheduleId(scheduleFromSession.getId());
+        Schedule scheduleFromSession = (Schedule)session.getAttribute("chosenSchedule");
+        
         List<Integer> listSeatIds = (List<Integer>)session.getAttribute("listSelectedSeatIds");
-        body.setListSeatIds(listSeatIds);
-        model.addAttribute("user",new User());
-
 
         String message = "Có người nhanh tay hơn đã chọn vào ghế mà bạn đã đặt, vui lòng chọn lại chỗ ngồi!";
         try {
-            HttpEntity<?> entity = new HttpEntity<>(body, headers);
-            ResponseEntity<String> response = restTemplate.exchange(API_CREATE_BILL, HttpMethod.POST, entity, String.class);
+            billService.createNewBill
         }catch (HttpClientErrorException ex){ // Nếu đã có người đặt ghế nhanh hơn thì quay lại trang chọn ghế
-                 message = ex.getResponseBodyAsString();
+                message = ex.getResponseBodyAsString();
                 session.setAttribute("bookedError",message);
-                return "redirect:/seat-selection?movieId=" + scheduleFromSession.getMovie().getId()
+                return "redirect:/user/seats?movieId=" + scheduleFromSession.getMovie().getId()
                         + "&branchId=+" + scheduleFromSession.getBranch().getId() + "&startDate="
                         + scheduleFromSession.getStartDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + "&startTime="
                         + scheduleFromSession.getStartTime().format(DateTimeFormatter.ofPattern("HH:mm"))      + "&roomId="

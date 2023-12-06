@@ -2,6 +2,8 @@ package com.example.demo.controllers;
 
 import com.example.demo.DTOs.SeatDTO;
 import com.example.demo.IServices.ISeatService;
+import com.example.demo.Services.ScheduleService;
+import com.example.demo.entities.Schedule;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @CrossOrigin("*")
@@ -19,11 +22,19 @@ public class SeatController {
     @Autowired
     private ISeatService seatService;
 
-    @GetMapping
-    public String getSeatsByScheduleId(HttpServletRequest request, Model model){
+    @Autowired 
+    private ScheduleService scheduleService;
 
-        Integer scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
-        List<SeatDTO> listSeatFiltered = seatService.getSeatsByScheduleId(scheduleId);
+    @GetMapping
+    public String displaySeatChoosing(HttpServletRequest request, Model model){
+        HttpSession session = request.getSession();
+        Integer movieId = (Integer)session.getAttribute("movieId");
+        String chosenDate = (String)session.getAttribute("chosenDate");
+        String chosenTime = request.getParameter("chosenTime");
+        Schedule chosenSchedule = scheduleService.getSchedules(movieId, chosenDate, chosenTime);
+        session.setAttribute("chosenSchedule", chosenSchedule);
+
+        List<SeatDTO> listSeatFiltered = seatService.getSeatsByScheduleId(chosenSchedule.getId());
     
         SeatDTO[] listSeatDTOS = new SeatDTO[listSeatFiltered.size()];
         for(int i = 0; i < listSeatFiltered.size(); i++){

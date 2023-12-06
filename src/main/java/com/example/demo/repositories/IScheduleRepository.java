@@ -1,4 +1,4 @@
-package com.example.demo.reporitories;
+package com.example.demo.repositories;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,6 +17,10 @@ public interface IScheduleRepository extends JpaRepository<Schedule, Integer>{
     List<LocalTime> getStartTimeByMovie_IdAndStartDate(@Param("movieId") Integer movieId
             , @Param("startDate") LocalDate startDate);
 
-    List<Schedule> getSchedulesByMovie_IdAndBranch_IdAndStartDateAndStartTimeAndRoom_Id(Integer movieId,Integer branchId
-    , LocalDate startDate,LocalTime startTime,Integer roomId);
+    @Query("SELECT DISTINCT s.startTime FROM Schedule s WHERE s.movie.id=:movieId" 
+            + "AND s.startDate=:startDate AND s.startTime=:startTime")
+    Schedule findSchedulesByMovie_IdAndStartDateAndStartTime(
+                          Integer movieId
+                        , LocalDate startDate
+                        , LocalTime startTime);
 }

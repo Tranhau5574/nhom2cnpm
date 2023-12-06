@@ -8,9 +8,9 @@ import com.example.demo.DTOs.SeatDTO;
 import com.example.demo.IServices.ISeatService;
 import com.example.demo.entities.Room;
 import com.example.demo.entities.Seat;
-import com.example.demo.reporitories.IScheduleRepository;
-import com.example.demo.reporitories.ISeatRepository;
-import com.example.demo.reporitories.ITicketRepository;
+import com.example.demo.repositories.IScheduleRepository;
+import com.example.demo.repositories.ISeatRepository;
+import com.example.demo.repositories.ITicketRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
