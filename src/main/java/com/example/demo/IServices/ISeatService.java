@@ -6,4 +6,6 @@ import com.example.demo.DTOs.SeatDTO;
 
 public interface ISeatService {
     List<SeatDTO> getSeatsByScheduleId(Integer scheduleId);
+
+    String findSeatNameById(Integer seatId);
 }

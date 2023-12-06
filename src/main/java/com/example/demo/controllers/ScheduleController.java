@@ -3,27 +3,20 @@ package com.example.demo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
+
 
 import com.example.demo.Services.ScheduleService;
-import com.example.demo.entities.Schedule;
 import com.example.demo.entities.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 public class ScheduleController {
@@ -35,7 +28,8 @@ public class ScheduleController {
         HttpSession session = request.getSession();
 
         // Để tạm ngày hôm nay
-        LocalDate today = LocalDate.parse("2021-01-05");
+        LocalDate.now();
+        LocalDate today = LocalDate.now();
         ArrayList<LocalDate> listDates = new ArrayList<>();
         listDates.add(today);
         // Lấy ra 10 ngày tính từ hôm nay để hiện trong trang chọn ngày

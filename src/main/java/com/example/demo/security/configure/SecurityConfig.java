@@ -47,6 +47,7 @@ public class  SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+            .csrf().disable()
             .authorizeRequests()
                 .antMatchers("/", "/login", "/register", "/movie-details").permitAll()
                 .antMatchers("/user/**").hasRole("CLIENT")
@@ -59,6 +60,7 @@ public class  SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll() // Allow everyone to access the login page
             .and()
             .logout()
+                .logoutUrl("/logout")
                 .logoutSuccessUrl("/logout-success") // Specify the URL after successful logout
                 .permitAll() // Allow everyone to access the logout URL
             .and()

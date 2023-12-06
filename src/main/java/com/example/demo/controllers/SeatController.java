@@ -4,12 +4,15 @@ import com.example.demo.DTOs.SeatDTO;
 import com.example.demo.IServices.ISeatService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+import javax.servlet.http.HttpServletRequest;
+
+@Controller
 @CrossOrigin("*")
 @RequestMapping("/user/seats")
 public class SeatController {
@@ -17,9 +20,11 @@ public class SeatController {
     private ISeatService seatService;
 
     @GetMapping
-    public String getSeatsByScheduleId(@RequestParam Integer scheduleId, Model model){
-        
+    public String getSeatsByScheduleId(HttpServletRequest request, Model model){
+
+        Integer scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
         List<SeatDTO> listSeatFiltered = seatService.getSeatsByScheduleId(scheduleId);
+    
         SeatDTO[] listSeatDTOS = new SeatDTO[listSeatFiltered.size()];
         for(int i = 0; i < listSeatFiltered.size(); i++){
             listSeatDTOS[i] = listSeatFiltered.get(i);

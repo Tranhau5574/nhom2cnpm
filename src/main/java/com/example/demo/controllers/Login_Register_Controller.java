@@ -33,6 +33,10 @@ public class Login_Register_Controller {
         }
         return "login";
     }
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String handleLogout(HttpServletRequest request, HttpServletResponse response) {
+        return "redirect:/";
+    }
 
     @RequestMapping(value = "/logout-success", method = RequestMethod.GET)
     public String logOut(HttpServletRequest request, HttpServletResponse response) {

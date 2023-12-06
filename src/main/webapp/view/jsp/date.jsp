@@ -35,7 +35,8 @@
                 </option>
             </c:forEach>
         </select>
-        <br>
+        <br><br>
+        <input type="submit" class="btn btn-outline-danger btn-block">
     </form>
 
 </div>

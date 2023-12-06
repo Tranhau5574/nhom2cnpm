@@ -46,11 +46,10 @@
             <c:choose>
                 <c:when test="${sessionScope.jwtResponse eq null}">
                     <li class="nav-item">
-                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalLoginForm">Đăng
-                            nhập</a>
+                        <a href="/login" class="btn btn-primary">Đăng nhập</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalRegisterForm">Đăng ký</a>
+                        <a href="/signup" class="btn btn-info">Đăng ký</a>
                     </li>
                 </c:when>
                 <c:otherwise>
@@ -58,7 +57,7 @@
                         <a style="color: gold">${sessionScope.jwtResponse.name}</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/account/sign-out" class="btn btn-danger">Đăng xuất</a>
+                        <a href="/logout" class="btn btn-danger">Đăng xuất</a>
                     </li>
                 </c:otherwise>
             </c:choose>
@@ -69,7 +68,7 @@
 </nav>
 <body>
 <!-- login modal -->
-<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<!-- <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -122,9 +121,9 @@
 <div class="text-center">
 
 </div>
-<!-- end of login modal -->
+ end of login modal 
 
-<!-- sign up modal -->
+ sign up modal 
 <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -168,14 +167,6 @@
             </form:form>
         </div>
     </div>
-</div>
+</div> -->
 <!-- end of sign up modal -->
-
-<script>
-    $("#btn-register").on('click', function () {
-        $("#modalLoginForm").modal("hide")
-        $(".modal-backdrop").css("display","none")
-        $("#modalRegisterForm").modal("show")
-    })
-</script>
 </body>
