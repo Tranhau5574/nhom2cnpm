@@ -2,6 +2,8 @@ package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import com.example.demo.Services.BillService;
 import com.example.demo.Services.SeatService;
 import com.example.demo.entities.Schedule;
+import com.example.demo.entities.User;
+import com.example.demo.security.service.User_UserDetails_Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -31,6 +36,12 @@ public class BillController {
 
     @Autowired
     SeatService seatService;
+    
+    @Autowired
+    User_UserDetails_Service userService;
+
+    @Autowired
+    BillService billService;
 
     @PostMapping
     public String displayBillPage(HttpServletRequest request, Model model){
@@ -65,23 +76,22 @@ public class BillController {
 
     @GetMapping
     public String createBill(HttpServletRequest request,Model model){
+
         HttpSession session = request.getSession();
         Schedule scheduleFromSession = (Schedule)session.getAttribute("chosenSchedule");
-        
         List<Integer> listSeatIds = (List<Integer>)session.getAttribute("listSelectedSeatIds");
+
+        User currentUser = (User)session.getAttribute("currentUser");
 
         String message = "Có người nhanh tay hơn đã chọn vào ghế mà bạn đã đặt, vui lòng chọn lại chỗ ngồi!";
         try {
-            billService.createNewBill
+            billService.createNewBills(scheduleFromSession, currentUser, listSeatIds);
         }catch (HttpClientErrorException ex){ // Nếu đã có người đặt ghế nhanh hơn thì quay lại trang chọn ghế
                 message = ex.getResponseBodyAsString();
                 session.setAttribute("bookedError",message);
-                return "redirect:/user/seats?movieId=" + scheduleFromSession.getMovie().getId()
-                        + "&branchId=+" + scheduleFromSession.getBranch().getId() + "&startDate="
-                        + scheduleFromSession.getStartDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + "&startTime="
-                        + scheduleFromSession.getStartTime().format(DateTimeFormatter.ofPattern("HH:mm"))      + "&roomId="
-                        + scheduleFromSession.getRoom().getId();
 
+                return "redirect:/user/seats?chosenTime="
+                        + scheduleFromSession.getStartTime().format(DateTimeFormatter.ofPattern("HH:mm"));
         }
 
 

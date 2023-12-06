@@ -27,6 +27,7 @@ public class SeatController {
 
     @GetMapping
     public String displaySeatChoosing(HttpServletRequest request, Model model){
+        
         HttpSession session = request.getSession();
         Integer movieId = (Integer)session.getAttribute("movieId");
         String chosenDate = (String)session.getAttribute("chosenDate");

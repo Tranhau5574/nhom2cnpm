@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,12 +28,21 @@ public class Login_Register_Controller {
     User_UserDetails_Service userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String showLoginPage(@RequestParam Integer error, Model model){
+    public String showLoginPage(HttpServletRequest request, Model model){
+
+        Integer error = Integer.parseInt(request.getParameter("error"));
         if(error != null && error == 1) {
             model.addAttribute("message", "Đăng nhập thất bại");
         }
+
+        HttpSession session = request.getSession();
+        String currentUserName = ((UserDetails)(SecurityContextHolder.getContext().getAuthentication().getPrincipal())).getUsername();
+        User currentUser = (userService.findByUsername(currentUserName)).get(); 
+        session.setAttribute("currentUser", currentUser);
+
         return "login";
     }
+    
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String handleLogout(HttpServletRequest request, HttpServletResponse response) {
         return "redirect:/";

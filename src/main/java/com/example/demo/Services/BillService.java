@@ -33,13 +33,7 @@ public class BillService implements IBillService{
 
     @Override
     @Transactional
-    public void createNewBill() throws RuntimeException {
-
-        //Lấy ra lịch
-        Schedule schedule = scheduleRepository.getById(bookingRequestDTO.getScheduleId());
-        //Lấy ra người dùng
-        User user = userRepository.getById(bookingRequestDTO.getUserId());
-
+    public void createNewBills(Schedule schedule, User user, List<Integer> listSelectedSeatIds) throws RuntimeException {
         //Lưu Bill gồm thông tin người dùng xuống trước
         Bill billToCreate = new Bill();
         billToCreate.setUser(user);
@@ -48,7 +42,7 @@ public class BillService implements IBillService{
 
         //Với mỗi ghế ngồi check xem đã có ai đặt chưa, nếu rồi thì throw, roll back luôn còn ko
         //thì đóng gói các thông tin ghế và lịch vào vé và lưu xuống db
-        bookingRequestDTO.getListSeatIds().forEach(seatId->{
+        listSelectedSeatIds.forEach(seatId->{
             if(!ticketRepository.findTicketsBySchedule_IdAndSeat_Id(schedule.getId(),seatId)
                     .isEmpty()){// Nếu đã có người đặt vé ghế đó ở lịch cụ thể đó thì
                 throw new RuntimeException("Đã có người nhanh tay hơn đặt ghế, mời bạn chọn lại!");

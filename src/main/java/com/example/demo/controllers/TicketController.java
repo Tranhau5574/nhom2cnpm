@@ -9,43 +9,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.example.demo.Services.TicketService;
+import com.example.demo.entities.Ticket;
+import com.example.demo.entities.User;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 @Controller
 @RequestMapping("/tickets")
 public class TicketController {
-    @Autowired
-    private RestTemplate restTemplate;
 
-    public static String API_GET_TICKETS = Api.baseURL+"/api/tickets";
+    @Autowired
+    TicketService ticketService;
+
     @GetMapping("/history")
     public String displayHistoryPage(Model model, HttpServletRequest request){
         HttpSession session = request.getSession();
-        // Gắn access token jwt vào header để gửi kèm request
-        HttpHeaders headers = new HttpHeaders();
-        headers.set(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
-        JwtResponseDTO jwtResponseDTO = (JwtResponseDTO)session.getAttribute("jwtResponse");
-        headers.set(HttpHeaders.AUTHORIZATION,"Bearer "+jwtResponseDTO.getAccessToken());
-        HttpEntity<?> entity = new HttpEntity<>(headers);
+        Integer userId = ((User)session.getAttribute("currentUser")).getId();
+        List<Ticket> ticketList = ticketService.getTicketsByUserId(userId);
 
-        // Gọi api lấy ra lịch được chọn
-        String urlTemplate = UriComponentsBuilder.fromHttpUrl(API_GET_TICKETS)
-                .queryParam("userId", "{userId}")
-                .encode()
-                .toUriString();
-        Map<String,String> listRequestParam = new HashMap<>();
-        listRequestParam.put("userId", jwtResponseDTO.getId()+"");
+        model.addAttribute("ticketList",ticketList);
 
-        ResponseEntity<TicketDTO[]> response = restTemplate.exchange(urlTemplate, HttpMethod.GET,entity,TicketDTO[].class
-        ,listRequestParam);
-
-        TicketDTO[] listTickets = response.getBody();
-
-        model.addAttribute("listTickets",listTickets);
-        model.addAttribute("user",new User());
         return "history";
     }
 }

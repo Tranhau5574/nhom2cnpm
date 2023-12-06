@@ -27,7 +27,7 @@ public class ScheduleService implements IScheduleService {
     @Override
     public Schedule getSchedules(Integer movieId, String startDate, String startTime) {
         return scheduleRepository.findSchedulesByMovie_IdAndStartDateAndStartTime(
-                 movieId ,LocalDate.parse(startDate),LocalTime.parse(startTime));
+                 movieId ,LocalDate.parse(startDate),LocalTime.parse(startTime, DateTimeFormatter.ofPattern("HH:mm")));
         }
     }
 
