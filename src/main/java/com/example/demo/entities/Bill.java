@@ -21,7 +21,7 @@ public class Bill {
     @CreatedDate
     private LocalDateTime createdTime;
 
-    private int totalprice;
+    private double totalprice;
 
     @OneToOne
     @JoinColumn(nullable = false,name="user_id")

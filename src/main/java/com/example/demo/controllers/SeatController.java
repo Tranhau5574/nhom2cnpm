@@ -25,9 +25,10 @@ public class SeatController {
     @Autowired 
     private ScheduleService scheduleService;
 
-    @GetMapping
+    @PostMapping
     public String displaySeatChoosing(HttpServletRequest request, Model model){
         
+        //Thêm Schedule vào session
         HttpSession session = request.getSession();
         Integer movieId = (Integer)session.getAttribute("movieId");
         String chosenDate = (String)session.getAttribute("chosenDate");

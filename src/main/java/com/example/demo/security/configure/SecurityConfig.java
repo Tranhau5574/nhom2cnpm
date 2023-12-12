@@ -52,14 +52,15 @@ public class  SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
             .and()  
             .formLogin()
-                .loginPage("/login") // Specify the custom login page URL
-                .failureUrl("/login?error=1") // Specify the URL for login failure
-                .permitAll() // Allow everyone to access the login page
+                .loginPage("/login") //Trang login
+                .defaultSuccessUrl("/logincheck?error=0")//Đăng nhập thành công
+                .failureUrl("/logincheck?error=1") ////Đăng nhập thất bại
+                .permitAll() 
             .and()
             .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/logout-success") // Specify the URL after successful logout
-                .permitAll() // Allow everyone to access the logout URL
+                .logoutUrl("/logout") //Trang logout
+                .logoutSuccessUrl("/logout-success") //Đăng xuất thành công
+                .permitAll()  
             .and()
                 .exceptionHandling()
                 .accessDeniedHandler(customAccessDeniedHandler());   //Access denied handler

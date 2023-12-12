@@ -12,10 +12,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entities.Role;
 import com.example.demo.entities.User;
@@ -25,24 +23,30 @@ import com.example.demo.security.service.User_UserDetails_Service;
 public class Login_Register_Controller {
 
     @Autowired
-    User_UserDetails_Service userService;
+    User_UserDetails_Service user_UserDetails_Service;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String showLoginPage(HttpServletRequest request, Model model){
-
-        Integer error = Integer.parseInt(request.getParameter("error"));
-        if(error != null && error == 1) {
-            model.addAttribute("message", "Đăng nhập thất bại");
-        }
-
-        HttpSession session = request.getSession();
-        String currentUserName = ((UserDetails)(SecurityContextHolder.getContext().getAuthentication().getPrincipal())).getUsername();
-        User currentUser = (userService.findByUsername(currentUserName)).get(); 
-        session.setAttribute("currentUser", currentUser);
-
-        return "login";
+    public String showLoginPage(){
+            return "login";
     }
-    
+
+    @RequestMapping(value = "/logincheck", method = RequestMethod.GET)
+    public String checkLogin(HttpServletRequest request, Model model){
+        
+        Integer error = Integer.parseInt(request.getParameter("error"));
+        if(error == 1) {
+            model.addAttribute("message", "Đăng nhập thất bại, thử lại");
+            return "login";
+        }
+        else {
+            HttpSession session = request.getSession();
+            String currentUserName = ((UserDetails)(SecurityContextHolder.getContext().getAuthentication().getPrincipal())).getUsername();
+            User currentUser = (user_UserDetails_Service.findByUsername(currentUserName)).get(); 
+            session.setAttribute("currentUser", currentUser);
+            return "homepage";
+        }
+    }
+
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String handleLogout(HttpServletRequest request, HttpServletResponse response) {
         return "redirect:/";
@@ -58,18 +62,12 @@ public class Login_Register_Controller {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public void saveUser(HttpServletRequest request){
-        HttpSession session = request.getSession();
-        session.setAttribute("user", request.getParameter("user"));
-    }
-
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public String registerUser(HttpServletRequest request, Model model){
         String rawUsername = request.getParameter("username");
         String rawPassword = request.getParameter("password");
         try {
-            if(userService.findByUsername(rawUsername).isPresent()){
+            if(user_UserDetails_Service.findByUsername(rawUsername).isPresent()){
                 throw new Exception("Đã tồn tại người dùng, vui lòng chọn tên đăng nhập khác");
             }
             User newUser = new User();
@@ -81,7 +79,7 @@ public class Login_Register_Controller {
             roleClient.setName("ROLE_CLIENT");
             roles.add(roleClient);
             newUser.setRoles(roles);
-            userService.save(newUser);
+            user_UserDetails_Service.save(newUser);
 
             model.addAttribute("message", "Tạo tài khoản thành công");
             return "login";

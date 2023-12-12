@@ -50,6 +50,7 @@ public class ScheduleController {
 
     @RequestMapping(value = "/user/chooseDate", method = RequestMethod.POST)
     public String displayTimePage(Model model, HttpServletRequest request){
+        
         HttpSession session = request.getSession();
         Integer movieId = (Integer)session.getAttribute("movieId");
         String chosenDate = request.getParameter("chosentDate");

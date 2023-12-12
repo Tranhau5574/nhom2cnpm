@@ -15,17 +15,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class BillService implements IBillService{
     @Autowired
-    private IScheduleRepository scheduleRepository;
-    @Autowired
     private ITicketRepository ticketRepository;
-    @Autowired
-    private IUserRepository userRepository;
     @Autowired
     private ISeatRepository seatRepository;
     @Autowired
@@ -54,6 +49,8 @@ public class BillService implements IBillService{
             ticket.setBill(createdBill);
             ticket.setQrImageURL("https://scontent-sin6-2.xx.fbcdn.net/v/t1.15752-9/268794058_655331555823095_3657556108194277679_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=BrNXGO8HufkAX_OGjWc&_nc_ht=scontent-sin6-2.xx&oh=03_AVK_zaJj7pziY9nLrVqoIQJAzbomu4KPgED1PxFFpYfCrQ&oe=61F778D8");
             ticketRepository.save(ticket);
+
+            createdBill.setTotalprice(schedule.getPrice() * listSelectedSeatIds.size());
         });
 
     }

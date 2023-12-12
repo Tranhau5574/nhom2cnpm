@@ -1,16 +1,12 @@
 package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
 
 import com.example.demo.Services.BillService;
 import com.example.demo.Services.SeatService;
@@ -20,13 +16,9 @@ import com.example.demo.security.service.User_UserDetails_Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 
@@ -45,7 +37,9 @@ public class BillController {
 
     @PostMapping
     public String displayBillPage(HttpServletRequest request, Model model){
+
         HttpSession session = request.getSession();
+
         //Lấy ra những chỗ ngồi mà khách đặt,map sang list kiểu int rồi lưu lên session
         String[] seatIds = request.getParameterValues("seats");
         List<Integer> listSeatIds = Arrays.stream(seatIds)
@@ -53,9 +47,11 @@ public class BillController {
                                           .collect(Collectors.toList());
         session.setAttribute("listSelectedSeatIds",listSeatIds);
 
-        // Đếm số ghế và lấy các ghế đã chọn:
+        // Đếm số ghế đã chọn:
         Integer numberOfSelectedSeats= listSeatIds.size();
         model.addAttribute("numberOfSelectedSeats",numberOfSelectedSeats);
+
+        //Lấy danh sach tên các ghế đã chọn:
         List<String> listSeatNames = listSeatIds.stream()
                                                 .map(seatId -> seatService.findSeatNameById(seatId))
                                                 .collect(Collectors.toList());
@@ -78,9 +74,10 @@ public class BillController {
     public String createBill(HttpServletRequest request,Model model){
 
         HttpSession session = request.getSession();
+
+        //Lấy lịch, user hiện tại và danh sach ghế đã chọn từ session để thử tạo bill mới
         Schedule scheduleFromSession = (Schedule)session.getAttribute("chosenSchedule");
         List<Integer> listSeatIds = (List<Integer>)session.getAttribute("listSelectedSeatIds");
-
         User currentUser = (User)session.getAttribute("currentUser");
 
         String message = "Có người nhanh tay hơn đã chọn vào ghế mà bạn đã đặt, vui lòng chọn lại chỗ ngồi!";
@@ -94,7 +91,6 @@ public class BillController {
                         + scheduleFromSession.getStartTime().format(DateTimeFormatter.ofPattern("HH:mm"));
         }
 
-
-        return "redirect:/tickets/history";
+        return "redirect:/user/tickets/history";
     }
 }
