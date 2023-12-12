@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping("   ")
+@RequestMapping("/user/tickets")
 public class TicketController {
 
     @Autowired
