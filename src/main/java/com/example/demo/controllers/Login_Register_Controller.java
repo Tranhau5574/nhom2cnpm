@@ -43,7 +43,7 @@ public class Login_Register_Controller {
             String currentUserName = ((UserDetails)(SecurityContextHolder.getContext().getAuthentication().getPrincipal())).getUsername();
             User currentUser = (user_UserDetails_Service.findByUsername(currentUserName)).get(); 
             session.setAttribute("currentUser", currentUser);
-            return "homepage";
+            return "redirect:/";
         }
     }
 
@@ -62,7 +62,12 @@ public class Login_Register_Controller {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String showRegisterPage(){
+        return "signup";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String registerUser(HttpServletRequest request, Model model){
         String rawUsername = request.getParameter("username");
         String rawPassword = request.getParameter("password");
@@ -76,7 +81,7 @@ public class Login_Register_Controller {
 
             Set<Role> roles = new HashSet<>();
             Role roleClient = new Role();
-            roleClient.setName("ROLE_CLIENT");
+            roleClient.setName("ROLE_ADMIN");
             roles.add(roleClient);
             newUser.setRoles(roles);
             user_UserDetails_Service.save(newUser);

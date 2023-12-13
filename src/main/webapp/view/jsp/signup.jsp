@@ -118,7 +118,7 @@
             <span>Đăng ký</span>
         </div>
         <div class="message"> ${message} </div>
-        <form action="/signup" method="post">
+        <form action="/register" method="post">
           <div class="row">
             <i class="fas fa-user"></i>
             <input type="text" name="username" placeholder="Tên đăng nhập" required>
