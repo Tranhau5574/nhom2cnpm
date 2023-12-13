@@ -126,6 +126,7 @@
         Tên đăng nhập: <input type="text" name="username" required><br>
         Mật khẩu: <input type="password" name="password" required><br>
         <input type="submit" value="Đăng nhập">
+        Đăng nhập: <   Tên đăng nhập: <input type="text" name="username" required><br>
     </form>
 </body>
 </html>

@@ -12,8 +12,8 @@
         }
 
         .logo {
-            width: 150px;
-            height: 80px;
+            width: 50px;
+            height: 50px;
         }
 
         body {
@@ -68,7 +68,7 @@
 <body>
     <footer>
         <span class="footer">
-            <img class="logo" src="" alt="">
+            <img class="logo" src="../../../img/HUST Cinema (2).png" alt="">
 
             <div  id="footer-column">
                 <h1>Liên hệ hợp tác</h1>
