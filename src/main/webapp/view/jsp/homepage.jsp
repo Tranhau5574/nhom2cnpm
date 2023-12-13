@@ -171,7 +171,6 @@
   </style>
   </head>
   <body>
-    <jsp:include page="header.jsp"/>
     <br>
     <br>
     <!-- carousel -->
@@ -199,13 +198,13 @@
                 <c:choose>
                     <c:when test="${count.index eq 0}">
                         <div class="carousel-item active">
-                            <img src="${movie.largeImageURL}" 
+                            <img src="${movie.imgURL}" 
                                  alt="..." width="1000" height="400">
                         </div>
                     </c:when>
                     <c:otherwise>
                         <div class="carousel-item">
-                            <img src="${movie.largeImageURL}"
+                            <img src="${movie.imgURL}"
                                  alt="..." width="1000" height="400">
                         </div>
                     </c:otherwise>
@@ -237,6 +236,7 @@
             </button>
         </form>
     </div>
+    
     <div>${movie.id} vcl</div>
     <a href="/movie-details?movieId=${movie.id}" class="btn btn-danger btn-block">Mua Vé</a>
     <img src="${movie.imgURL}" alt="Movie Image">

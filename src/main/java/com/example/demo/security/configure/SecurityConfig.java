@@ -53,7 +53,7 @@ public class  SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()  
             .formLogin()
                 .loginPage("/login") //Trang login
-                .defaultSuccessUrl("/logincheck?error=0")//Đăng nhập thành công
+                .defaultSuccessUrl("/logincheck?error=0",true)//Đăng nhập thành công
                 .failureUrl("/logincheck?error=1") ////Đăng nhập thất bại
                 .permitAll() 
             .and()
