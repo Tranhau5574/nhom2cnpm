@@ -17,10 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.Role;
 import com.example.demo.entities.User;
+import com.example.demo.security.service.RoleService;
 import com.example.demo.security.service.User_UserDetails_Service;
 
 @Controller
 public class Login_Register_Controller {
+
+    @Autowired
+    RoleService roleService;
 
     @Autowired
     User_UserDetails_Service user_UserDetails_Service;
@@ -80,8 +84,7 @@ public class Login_Register_Controller {
             newUser.setPassword(rawPassword);
 
             Set<Role> roles = new HashSet<>();
-            Role roleClient = new Role();
-            roleClient.setName("ROLE_ADMIN");
+            Role roleClient = roleService.findByName("ROLE_CLIENT");
             roles.add(roleClient);
             newUser.setRoles(roles);
             user_UserDetails_Service.save(newUser);

@@ -18,7 +18,7 @@
 
 <body>
 <!-- nav bar -->
-<jsp:include page="header.jsp"/>
+
 <!-- end of navbar -->
 
 <br><br><br>

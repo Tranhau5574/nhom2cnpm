@@ -24,7 +24,7 @@ public class MovieController {
     MovieService movieService;
 
     @GetMapping
-    public String displayMovieDetailPage(@RequestParam Integer movieId, Model model, HttpServletRequest request){
+    public String displayMovieDetailPage(@RequestParam Integer movieId, Model model){
    
         Movie movie = movieService.getMovieById(movieId);
         model.addAttribute("movie",movie);

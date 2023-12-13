@@ -247,8 +247,12 @@
             </button>
         </form>
     </div>
-    <div>${movie.name} vcl</div>
+    <div>${movie.id} vcl</div>
+    <a href="/movie-details?movieId=${movie.id}" class="btn btn-danger btn-block">Mua Vé</a>
     <img src="${movie.imgURL}" alt="Movie Image">
     <iframe width="560" height="315" src="${movie.trailerURL}" frameborder="0" allowfullscreen></iframe>
+
+    <!--footer-->
+    <jsp:include page="footer.jsp"/>
 </body> 
 </html>

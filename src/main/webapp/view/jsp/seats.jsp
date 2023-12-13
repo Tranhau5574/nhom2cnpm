@@ -69,7 +69,7 @@
 </head>
 <body>
     <!-- nav bar -->
-    <jsp:include page="header.jsp"/>
+
     <br><br><br>
     <!-- end of navbar -->
 
