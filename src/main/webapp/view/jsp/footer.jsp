@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,7 +69,7 @@
 <body>
     <footer>
         <span class="footer">
-            <img class="logo" src="" alt="">
+            <img class="logo" src="/src/main/image/HUST Cinema (2).png" alt="">
 
             <div  id="footer-column">
                 <h1>Liên hệ hợp tác</h1>
@@ -86,16 +87,16 @@
 
             <div id="footer-column">
                 <h1>Kết nối với chúng tôi</h1>
-                <img src="/nhom2cnpm/src/main/image/c-13.png" alt="">
-                <img src="/nhom2cnpm/src/main/image/c-16.png" alt="">
-                <img src="/nhom2cnpm/src/main/image/c-18.png" alt="">
+                <img src="/src/main/image/c-13.png" alt="">
+                <img src="/src/main/image/c-16.png" alt="">
+                <img src="/src/main/image/c-18.png" alt="">
             </div>
 
            
         </span>
 
         
-        <div class="divider"></div>
+        <!-- <div class="divider"></div> -->
         
         <div class="brand-info">
             <h1>HustCinema</h1>
