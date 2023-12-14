@@ -13,4 +13,7 @@ public class SeatDTO {
     public void setIsOccupied(boolean b) {
         this.isOccupied = b;
     }
+    public boolean getIsOccupied() {
+        return isOccupied;
+    }
 }

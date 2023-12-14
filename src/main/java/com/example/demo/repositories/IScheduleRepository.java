@@ -21,7 +21,7 @@ public interface IScheduleRepository extends JpaRepository<Schedule, Integer>{
     @Query("SELECT s FROM Schedule s WHERE s.movie.id=:movieId" 
             + " AND s.startDate=:startDate AND s.startTime=:startTime")
     Schedule findSchedulesByMovie_IdAndStartDateAndStartTime(
-                          Integer movieId
-                        , LocalDate startDate
-                        , LocalTime startTime);
+                  @Param("movieId") Integer movieId
+                , @Param("startDate") LocalDate startDate
+                , @Param("startTime") LocalTime startTime);
 }
