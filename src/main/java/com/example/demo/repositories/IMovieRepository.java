@@ -14,3 +14,4 @@ public interface IMovieRepository extends JpaRepository<Movie, Integer> {
     
     Movie findMovieById(Integer id);
 }
+   
