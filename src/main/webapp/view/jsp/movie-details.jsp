@@ -45,7 +45,7 @@
                 <th>${movie.director}</th>
             </tr>
             <tr>
-                <th><b>Diễn Viên:</b></th>
+                <th><b style="font-family: 'Arial', sans-serif;">Diễn Viên:</b></th>
                 <th>${movie.actors}</th>
             </tr>
             <tr>

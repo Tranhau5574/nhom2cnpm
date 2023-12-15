@@ -49,7 +49,7 @@
                     <td >${ticket.schedule.movie.name}</td>
                     <td>${ticket.schedule.startTime} ${ticket.schedule.startDate}</td>
                     <td>${ticket.schedule.room.id}</td>
-                    <td>${ticket.seat.id}</td>
+                    <td>${ticket.seat.name}</td>
                     <td>${ticket.bill.createdTime}</td>
                     <td><img src="${ticket.qrImageURL}"></td>
                 </tr>

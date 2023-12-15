@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -14,159 +13,95 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+    <style>
+        .container{
+            display: inline-flex;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            /* background-color: red; */
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #login {
+            background-color: blue;
+            border-color: black;
+        }
+
+        #register {
+            background-color: green;
+            border-color: black;
+        }
+
+        #logout {
+            background-color: red;
+            border-color: black;
+        }
+        .nav-item{
+            display: inline-block;
+        }
+    </style>
 </head>
-<!-- nav bar -->
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-    <a class="navbar-brand" href="/">HUYCINEMA</a>
-
-    <div class="collapse navbar-collapse" id="navb">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Trang chủ</a>
-            </li>
-            <c:choose>
-                <c:when test="${sessionScope.jwtResponse eq null}">
-
-                </c:when>
-                <c:otherwise>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/tickets/history">Lịch sử mua vé</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Cá nhân</a>
-                    </li>
-                </c:otherwise>
-            </c:choose>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/">Liên hệ</a>
-            </li>
-        </ul>
-        <div class="form-inline my-2 my-lg-0">
-            <c:choose>
-                <c:when test="${sessionScope.jwtResponse eq null}">
-                    <li class="nav-item">
-                        <a href="/login" class="btn btn-primary">Đăng nhập</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/signup" class="btn btn-info">Đăng ký</a>
-                    </li>
-                </c:when>
-                <c:otherwise>
-                    <li class="nav-item">
-                        <a style="color: gold">${sessionScope.jwtResponse.name}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/logout" class="btn btn-danger">Đăng xuất</a>
-                    </li>
-                </c:otherwise>
-            </c:choose>
-
-
-        </div>
+    <div class="container">
+        <a class="navbar-brand" href="/">
+        <img src="/src/main/resources/static/image/HUST Cinema (2).png" alt="Logo" width="30" height="30" >
+        HUSTCINEMA
+        </a>
     </div>
+
+    <span class="nav-item">
+        <div class="nav-item">
+            <a class="nav-link" href="/">Trang chủ</a>
+        </div>
+        <c:choose>
+            <c:when test="${sessionScope.currentUser eq null}">
+
+            </c:when>
+            <c:otherwise>
+                <div class="nav-item">
+                    <a class="nav-link" href="/user/tickets/history">Lịch sử mua vé</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" href="#">Cá nhân</a>
+                </div>
+            </c:otherwise>
+        </c:choose>
+    </span>
+    
+    <div class="form-inline my-2 my-lg-0">
+        <c:choose>
+            <c:when test="${sessionScope.currentUser eq null}">
+                <div class="nav-item">
+                    <a href="/login" class="btn" id="login">Đăng nhập</a>
+                </div>
+                <div class="nav-item">
+                    <a href="/register" class="btn" id="register">Đăng ký</a>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="nav-item">
+                    <a style="color: gold">${sessionScope.currentUser.username}</a>
+                </div>
+                <div class="nav-item">
+                    <a href="/logout" class="btn" id="logout">Đăng xuất</a>
+                </div>
+            </c:otherwise>
+        </c:choose>
+
+    </div>
+    
 </nav>
 <body>
-<!-- login modal -->
-<!-- <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="/login" method="post">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Đăng nhập</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body mx-3">
-                    <c:choose>
-                        <c:when test="${loginError eq null}">
-
-                        </c:when>
-                        <c:otherwise>
-                            <p style="color: red"><i>${loginError}</i></p>
-                            <br>
-                        </c:otherwise>
-                    </c:choose>
-                    <div class="md-form mb-5">
-                        <label data-error="wrong" data-success="right" for="defaultForm-email">Email</label>
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <input name="username" type="text" id="defaultForm-email" class="form-control validate"
-                               value="${un}"/>
-                    </div>
-
-                    <div class="md-form mb-4">
-                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Mật khẩu</label>
-                        <i class="fas fa-lock prefix grey-text"></i>
-                        <input name="password" type="password" id="defaultForm-pass" class="form-control validate"
-                               value="${pw}"/>
-                    </div>
-                </div>
-                <div class="modal-header d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary btn-block" >Đăng Nhập</button>
-                </div>
-            </form>
-            <div class=" d-flex justify-content-center">
-                Chưa có tải khoản?
-            </div>
-            <div class="modal-header d-flex justify-content-center">
-                <button id="btn-register" class="btn btn-info btn-block">Đăng Ký</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="text-center">
-
-</div>
- end of login modal 
-
- sign up modal 
-<div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form:form action="/account/register" method="post" modelAttribute="user">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Đăng ký</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body mx-3">
-                    <div class="md-form mb-5">
-                        <p><i style="color: red">${registerError}</i></p>
-                        <label data-error="wrong" data-success="right" for="orangeForm-name">Họ tên</label>
-                        <i class="fas fa-user prefix grey-text"></i>
-                        <form:input path="fullName" name="fullname" type="text" id="orangeForm-name"
-                                    class="form-control validate" value="${fn}"/>
-                        <form:errors path="fullName" cssClass="error" cssStyle="color: red"/>
-                    </div>
-                    <div class="md-form mb-5">
-                        <label data-error="wrong" data-success="right" for="orangeForm-email">Email</label>
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <form:input path="username" name="username" type="text" id="orangeForm-email"
-                                    class="form-control validate" value="${un}"/>
-                        <form:errors path="username" cssClass="error" cssStyle="color: red"/>
-                    </div>
-
-                    <div class="md-form mb-4">
-                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Mật khẩu</label>
-                        <i class="fas fa-lock prefix grey-text"></i>
-                        <form:input path="password" name="password" type="password" id="orangeForm-pass"
-                                    class="form-control validate" value="${pw}"></form:input>
-                        <form:errors path="password" cssClass="error" cssStyle="color: red"/>
-                    </div>
-
-                </div>
-                <div class="modal-footer d-flex justify-content-center">
-                    <form:button class="btn btn-primary btn-block">Đăng ký</form:button>
-                </div>
-            </form:form>
-        </div>
-    </div>
-</div> -->
-<!-- end of sign up modal -->
+    
 </body>
+
+</html>

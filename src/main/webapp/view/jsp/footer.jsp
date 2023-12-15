@@ -64,12 +64,29 @@
             top: 23%; /* Chuyển đường thẳng xuống giữa */
             transform: translateX(50%); /* Duy trì độ chính xác trung tâm */
         }
+        a {
+            display: inline-block;
+            background-size: cover;
+            width: 50px; /* Đặt kích thước theo mong muốn */
+            height: 50px; /* Đặt kích thước theo mong muốn */
+            text-decoration: none; /* Loại bỏ đường gạch chân mặc định */
+            overflow: hidden; /* Ẩn phần nằm ngoài kích thước đã đặt */
+        }
+        .imgfb{
+            background-image: url('https://th.bing.com/th/id/OIP.55DCXbXlKDgEBoZhKxpzLAAAAA?rs=1&pid=ImgDetMain');
+        }
+        .imgzl{
+            background-image: url('https://th.bing.com/th/id/OIP.msYm3MzM9_zN0UkpvVL0EgHaHa?rs=1&pid=ImgDetMain');
+        }
+        .imgig{
+            background-image: url('https://th.bing.com/th/id/OIP.nYyosnlFiPTBa2OqhFoe_wHaHa?rs=1&pid=ImgDetMain');
+        }
     </style>
 </head>
 <body>
     <footer>
         <span class="footer">
-            <img class="logo" src="/image/HUST Cinema (2).png" alt="">
+            <img class="logo" src="/src/main/resources/static/image/HUST Cinema (2).png" alt="">
 
             <div  id="footer-column">
                 <h1>Liên hệ hợp tác</h1>
@@ -87,9 +104,11 @@
 
             <div id="footer-column">
                 <h1>Kết nối với chúng tôi</h1>
-                <img src="/image/c-13.png" alt="">
-                <img src="/image/c-16.png" alt="">
-                <img src="/image/c-18.png" alt="">
+                <div>
+                        <a class="imgfb" href="#"></a>
+                        <a class="imgzl" href="#"></a>
+                        <a class="imgig" href="#"></a>
+                </div>
             </div>
 
            
