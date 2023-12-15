@@ -32,7 +32,7 @@
     <br>
     <div style="display:flex">
         <div style="margin-right:50px">
-            <img src="${movie.imgURL}" alt="">
+            <img src="${movie.imgURL}" alt="" width="200" height="260">
             <a href="/user/chooseDate?movieId=${movie.id}" class="btn btn-danger btn-block">Mua Vé</a>
         </div>
         <table>
