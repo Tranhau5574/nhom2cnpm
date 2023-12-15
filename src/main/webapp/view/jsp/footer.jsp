@@ -69,7 +69,7 @@
 <body>
     <footer>
         <span class="footer">
-            <img class="logo" src="/src/main/image/HUST Cinema (2).png" alt="">
+            <img class="logo" src="/image/HUST Cinema (2).png" alt="">
 
             <div  id="footer-column">
                 <h1>Liên hệ hợp tác</h1>
@@ -87,9 +87,9 @@
 
             <div id="footer-column">
                 <h1>Kết nối với chúng tôi</h1>
-                <img src="/src/main/image/c-13.png" alt="">
-                <img src="/src/main/image/c-16.png" alt="">
-                <img src="/src/main/image/c-18.png" alt="">
+                <img src="/image/c-13.png" alt="">
+                <img src="/image/c-16.png" alt="">
+                <img src="/image/c-18.png" alt="">
             </div>
 
            
