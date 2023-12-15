@@ -42,11 +42,12 @@ public class BillController {
 
         //Lấy ra những chỗ ngồi mà khách đặt,map sang list kiểu int rồi lưu lên session
         String[] seatIds = request.getParameterValues("seats");
+        
         List<Integer> listSeatIds = Arrays.stream(seatIds)
                                           .map(seatId->Integer.parseInt(seatId))
                                           .collect(Collectors.toList());
         session.setAttribute("listSelectedSeatIds",listSeatIds);
-
+       
         // Đếm số ghế đã chọn:
         Integer numberOfSelectedSeats= listSeatIds.size();
         model.addAttribute("numberOfSelectedSeats",numberOfSelectedSeats);

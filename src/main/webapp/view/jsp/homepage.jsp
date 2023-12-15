@@ -198,13 +198,13 @@
                 <c:choose>
                     <c:when test="${count.index eq 0}">
                         <div class="carousel-item active">
-                            <img src="${movie.imgURL}" 
+                            <img src="${movie.posterURL}" 
                                  alt="..." width="1000" height="400">
                         </div>
                     </c:when>
                     <c:otherwise>
                         <div class="carousel-item">
-                            <img src="${movie.imgURL}"
+                            <img src="${movie.posterURL}"
                                  alt="..." width="1000" height="400">
                         </div>
                     </c:otherwise>

@@ -37,10 +37,6 @@
                     <th>${sessionScope.schedule.movie.name}</th>
                 </tr>
                 <tr>
-                    <th><b>Tên Chi Nhánh:</b></th>
-                    <th>${sessionScope.schedule.branch.name}</th>
-                </tr>
-                <tr>
                     <th><b>Giờ Chiếu:</b></th>
                     <th>${sessionScope.schedule.startTime}</th>
                 </tr>
