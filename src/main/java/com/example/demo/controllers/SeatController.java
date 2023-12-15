@@ -62,13 +62,7 @@ public class SeatController {
         model.addAttribute("listC",listC);
         model.addAttribute("listD",listD);
         model.addAttribute("listE",listE);
-
-
-        System.out.println("da den buoc 2");
        
-        for(SeatDTO a : listA){
-            System.out.print(a.getName() +" ");
-        }
          return "seats";
     }
 }

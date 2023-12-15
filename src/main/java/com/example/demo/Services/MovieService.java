@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.IServices.IMovieService;
 import com.example.demo.entities.Movie;
-import com.example.demo.entities.Role;
 import com.example.demo.repositories.IMovieRepository;
 
 
@@ -29,5 +28,15 @@ public class MovieService implements IMovieService{
 
     public Movie getMovieByName(String name){
         return movieRepository.findMovieByName(name);
-    };
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        movieRepository.deleteById(id);
+    }
+
+    @Override
+    public Movie save(Movie movie) {
+        return movieRepository.save(movie);
+    }
 } 
