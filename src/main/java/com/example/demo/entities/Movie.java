@@ -21,7 +21,6 @@ public class Movie {
     private int id;
     
     private String name;
-    private String posterURL;
     private String imgURL;
     private String posterURL;
     private String trailerURL;
