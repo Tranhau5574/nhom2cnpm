@@ -199,13 +199,13 @@
                     <c:when test="${count.index eq 0}">
                         <div class="carousel-item active">
                             <img src="${movie.posterURL}" 
-                                 alt="..." width="1000" height="400">
+                                 alt="..." width="500" height="300">
                         </div>
                     </c:when>
                     <c:otherwise>
                         <div class="carousel-item">
                             <img src="${movie.posterURL}"
-                                 alt="..." width="1000" height="400">
+                                 alt="..." width="500" height="300">
                         </div>
                     </c:otherwise>
                 </c:choose>

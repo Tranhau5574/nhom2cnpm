@@ -40,7 +40,7 @@
             margin: 10px;
         }
         input[type="checkbox"] + label {
-            background-image: url('/image/seat-${seat.id}-unselect-normal.png'); 
+            background-image: url('/image/seat-unselect-normal.png'); 
         }
 
         /* Hình ảnh tùy chỉnh cho checkbox được chọn */
