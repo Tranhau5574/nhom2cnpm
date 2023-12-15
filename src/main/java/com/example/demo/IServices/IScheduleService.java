@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface IScheduleService {
+    List<Schedule> findAllByMovieId(Integer movieId);
+
     List<String> getStartTimes(Integer movieId, LocalDate startDate);
+
     Schedule getSchedules(Integer movieId, String startDate, String startTime);
 }

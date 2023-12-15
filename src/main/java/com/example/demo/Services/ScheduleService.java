@@ -15,8 +15,15 @@ import java.util.stream.Collectors;
 
 @Service
 public class ScheduleService implements IScheduleService {
+
     @Autowired
     private IScheduleRepository scheduleRepository;
+
+    @Override
+    public List<Schedule> findAllByMovieId(Integer movieId) {
+        return scheduleRepository.findAllByMovieId(movieId);
+    }
+
     @Override
     public List<String> getStartTimes(Integer movieId, LocalDate startDate) {
         return scheduleRepository.getStartTimeByMovie_IdAndStartDate(movieId, startDate)
@@ -28,6 +35,6 @@ public class ScheduleService implements IScheduleService {
     public Schedule getSchedules(Integer movieId, String startDate, String startTime) {
         return scheduleRepository.findSchedulesByMovie_IdAndStartDateAndStartTime(
                  movieId ,LocalDate.parse(startDate),LocalTime.parse(startTime, DateTimeFormatter.ofPattern("HH:mm")));
-        }
     }
+}
 

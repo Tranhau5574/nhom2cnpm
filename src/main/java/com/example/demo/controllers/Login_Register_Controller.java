@@ -47,7 +47,12 @@ public class Login_Register_Controller {
             String currentUserName = ((UserDetails)(SecurityContextHolder.getContext().getAuthentication().getPrincipal())).getUsername();
             User currentUser = (user_UserDetails_Service.findByUsername(currentUserName)).get(); 
             session.setAttribute("currentUser", currentUser);
-            return "redirect:/";
+            if((currentUser.getRoles()).size() == 1){
+                return "redirect:/";
+            }
+            else{
+                return "redirect:/";
+            }
         }
     }
 
@@ -60,6 +65,7 @@ public class Login_Register_Controller {
     public String logOut(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(false);
         if (session != null) {
+            session.removeAttribute("currentUser");
             session.invalidate();
         }
         SecurityContextHolder.clearContext();

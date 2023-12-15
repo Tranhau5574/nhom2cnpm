@@ -55,7 +55,7 @@
                     <th><b>Danh sách vé:</b></th>
                     <th>
                         <c:forEach items="${listSeats}" var="seat">
-                            <td>${seat}</td>
+                        <div> ${seat} </div>
                         </c:forEach>
                     </th>
                 </tr>
@@ -70,7 +70,7 @@
             </table>
             <div style="margin-left:50px">
                 <img src="${sessionScope.chosenSchedule.movie.imgURL}" alt="">
-            </div>+
+            </div>
         </div>
         <br>
         <a href="/user/bill" class="btn btn-outline-danger btn-block">Thanh Toán</a>

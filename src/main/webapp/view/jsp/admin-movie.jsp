@@ -15,52 +15,41 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <style type="text/css">
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        td{
-            text-align:center
+        th {
+            padding: 0px 20px 5px 0px;
         }
     </style>
 </head>
 
 <body>
 <!-- nav bar -->
-
 <!-- end of navbar -->
 
 <br><br><br>
-<div class="container-fluid">
-    <h2>Lịch Sử Mua Vé </h2>
+<div class="container">
+    <h2>Sua lich chieu</h2>
+    
     <br>
-    <div>
-        <table style="width:100%">
-            <tr>
-                <th>Tên Phim</th>
-                <th>Giờ Chiếu</th>
-                <th>Phòng</th>
-                <th>Ghế</th>
-                <th>Giờ Mua</th>
-                <th>Mã QR</th>
-            </tr>
-            <c:forEach items="${listTickets}" var="ticket">
+
+    <div style="display:flex">
+        <table>
+            <c:forEach items="${movieList}" var="movie">
                 <tr>
-                    <td >${ticket.schedule.movie.name}</td>
-                    <td>${ticket.schedule.startTime} ${ticket.schedule.startDate}</td>
-                    <td>${ticket.schedule.room.id}</td>
-                    <td>${ticket.seat.name}</td>
-                    <td>${ticket.bill.createdTime}</td>
-                    <td><img src="${ticket.qrImageURL}"></td>
+                    <th>${movie.id}</th>
+                    <th>${movie.name}</th>
+                    <th><a href="/admin/schedule" class="btn btn-outline-danger btn-block">Thay doi lich chieu</a></th>
+                    <th><a href="/admin/deleteMovie?movieId=${movie.id}" class="btn btn-outline-danger btn-block">Xoa phim</a></th>
                 </tr>
-            </c:forEach>
-
-
+            </c:forEach>  
         </table>
-
+        
     </div>
+    <br><br>
+    <a href="/admin/addMovie" class="btn btn-outline-danger btn-block">Them phim</a>
     <br>
+
 </div>
+<br>
 <br>
 <br>
 <jsp:include page="footer.jsp"/>

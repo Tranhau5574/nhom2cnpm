@@ -12,5 +12,9 @@ public interface IMovieService {
     Movie getMovieById(int id);
 
     Movie getMovieByName(String name);
+
+    void deleteById(Integer id);
+
+    Movie save(Movie movie);
 } 
 

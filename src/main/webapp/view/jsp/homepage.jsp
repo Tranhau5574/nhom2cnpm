@@ -13,8 +13,8 @@
       /* carousel */
       /* Make the image fully responsive */
       .carousel-inner img {
-          width: 100%;
-          height: 100%;
+          width: 80%;
+          height: 80%;
       }
 
       .img-movie {
@@ -171,12 +171,8 @@
   </style>
   </head>
   <body>
-    <br>
-    <br>
+    <jsp:include page="header.jsp"/>
     <!-- carousel -->
-    <br>
-    <br>
-    <br>
     <h1>Phim Mới Chiếu</h1>
     <div id="demo" class="carousel slide" data-ride="carousel">
 
@@ -212,14 +208,6 @@
             </c:forEach>
         </div>
 
-        <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
-        <!--  -->
     </div>
     <!-- end of carousel -->
 
@@ -239,7 +227,7 @@
     
     <div>${movie.id} vcl</div>
     <a href="/movie-details?movieId=${movie.id}" class="btn btn-danger btn-block">Mua Vé</a>
-    <img src="${movie.imgURL}" alt="Movie Image">
+    <img src="${movie.imgurl}" alt="Movie Image">
     <iframe width="560" height="315" src="${movie.trailerURL}" frameborder="0" allowfullscreen></iframe>
 
     <!--footer-->
