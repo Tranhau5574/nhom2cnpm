@@ -74,6 +74,7 @@
     <!-- end of navbar -->
 
     <h1>Chọn chỗ ngồi</h1>
+    <div class="error-message">${sessionScope.bookedError}</div>
     <div>
         <img class="screen" src="/image/ic-screen.png" alt="Man 12 hinh">
     </div>
@@ -102,14 +103,14 @@
                         <c:choose>
                             <c:when test="${seat.isOccupied eq true}">
                                 <th>
-                                    <input type="checkbox" id="checkbox-${seat.id}-unselect" name="seats" value="${seat.id}" checked disabled >
-                                    <label for="checkbox-${seat.id}-unselect"></label>
+                                    <input type="checkbox" id="checkboxA-${seat.id}-unselect" class="largerCheckbox" name="seats" value="${seat.id}" checked disabled >
+                                    <label for="checkboxA-${seat.id}-unselect"></label>
                                 </th>
                             </c:when>
                             <c:otherwise>
                                 <th>
-                                    <input type="checkbox" id="checkbox-${seat.id}-select" name="seats" value="${seat.id}" >
-                                    <label for="checkbox-${seat.id}-select"></label>
+                                    <input type="checkbox" id="checkboxA-select" class="largerCheckbox" name="seats" value="${seat.name}" >
+                                    <label for="checkboxA-select"></label>
                                 </th>
                             </c:otherwise>
                         </c:choose>
@@ -123,14 +124,14 @@
                         <c:choose>
                             <c:when test="${seat.isOccupied eq true}">
                                 <th>
-                                    <input type="checkbox" id="checkbox-${seat.id}-unselect"   name="seats" value="${seat.id}" checked disabled >
-                                    <label for="checkbox-${seat.id}-unselect"></label>
+                                    <input type="checkbox" id="checkboxB-unselect" class="largerCheckbox" name="seats" value="${seat.name}" checked disabled >
+                                    <label for="checkboxB-unselect"></label>
                                 </th>
                             </c:when>
                             <c:otherwise>
                                 <th>
-                                    <input type="checkbox" id="checkbox-${seat.id}-select"   name="seats" value="${seat.id}" >
-                                    <label for="checkbox-${seat.id}-select"></label>
+                                    <input type="checkbox" id="checkboxB-select" class="largerCheckbox" name="seats" value="${seat.name}" >
+                                    <label for="checkboxB-select"></label>
                                 </th>
                             </c:otherwise>
                         </c:choose>
@@ -144,14 +145,14 @@
                         <c:choose>
                             <c:when test="${seat.isOccupied eq true}">
                                 <th>
-                                    <input type="checkbox" id="checkbox-${seat.id}-unselect"   name="seats" value="${seat.id}" checked disabled >
-                                    <label for="checkbox-${seat.id}-unselect"></label>
+                                    <input type="checkbox" id="checkboxC-unselect" class="largerCheckbox" name="seats" value="${seat.name}" checked disabled >
+                                    <label for="checkboxC-unselect"></label>
                                 </th>
                             </c:when>
                             <c:otherwise>
                                 <th>
-                                    <input type="checkbox" id="checkbox-${seat.id}-select"   name="seats" value="${seat.id}" >
-                                    <label for="checkbox-${seat.id}-select"></label>
+                                    <input type="checkbox" id="checkboxC-select" class="largerCheckbox" name="seats" value="${seat.name}" >
+                                    <label for="checkboxC-select"></label>
                                 </th>
                             </c:otherwise>
                         </c:choose>
@@ -165,14 +166,14 @@
                         <c:choose>
                             <c:when test="${seat.isOccupied eq true}">
                                 <th>
-                                    <input type="checkbox" id="checkbox-${seat.id}-unselect"   name="seats" value="${seat.id}" checked disabled >
-                                    <label for="checkbox-${seat.id}-unselect"></label>
+                                    <input type="checkbox" id="checkboxD-unselect" class="largerCheckbox" name="seats" value="${seat.name}" checked disabled >
+                                    <label for="checkboxD-unselect"></label>
                                 </th>
                             </c:when>
                             <c:otherwise>
                                 <th>
-                                    <input type="checkbox" id="checkbox-${seat.id}-select"   name="seats" value="${seat.id}" >
-                                    <label for="checkbox-${seat.id}-select"></label>
+                                    <input type="checkbox" id="checkboxD-select" class="largerCheckbox" name="seats" value="${seat.name}" >
+                                    <label for="checkboxD-select"></label>
                                 </th>
                             </c:otherwise>
                         </c:choose>
@@ -186,14 +187,14 @@
                         <c:choose>
                             <c:when test="${seat.isOccupied eq true}">
                                 <th>
-                                    <input type="checkbox" id="checkbox-${seat.id}-unselect"   name="seats" value="${seat.id}" checked disabled >
-                                    <label for="checkbox-${seat.id}-unselect"></label>
+                                    <input type="checkbox" id="checkboxE-unselect" class="largerCheckbox" name="seats" value="${seat.name}" checked disabled >
+                                    <label for="checkboxE-unselect"></label>
                                 </th>
                             </c:when>
                             <c:otherwise>
                                 <th>
-                                    <input type="checkbox" id="checkbox-${seat.id}-select"   name="seats" value="${seat.id}" >
-                                    <label for="checkbox-${seat.id}-select"></label>
+                                    <input type="checkbox" id="checkboxE-select" class="largerCheckbox" name="seats" value="${seat.name}" >
+                                    <label for="checkboxE-select"></label>
                                 </th>
                             </c:otherwise>
                         </c:choose>

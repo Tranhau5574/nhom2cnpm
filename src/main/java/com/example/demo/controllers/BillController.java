@@ -91,7 +91,6 @@ public class BillController {
                 return "redirect:/user/seats?chosenTime="
                         + scheduleFromSession.getStartTime().format(DateTimeFormatter.ofPattern("HH:mm"));
         }
-
         return "redirect:/user/tickets/history";
     }
 }

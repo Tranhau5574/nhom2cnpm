@@ -25,7 +25,7 @@ public class SeatController {
     @Autowired 
     private ScheduleService scheduleService;
 
-    @PostMapping
+    @GetMapping
     public String displaySeatChoosing(HttpServletRequest request, Model model){
                 
         //Thêm Schedule vào session

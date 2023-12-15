@@ -126,8 +126,10 @@
         <div class="wrapper">
           <div class="title">
               <span>Đăng nhập</span>
+              
           </div>
           <form action="/login" method="post">
+            <div class="message">${message}</div>
             <div class="row">
               <i class="fas fa-user"></i>
               <input type="text" name="username" placeholder="Tên đăng nhập" required>
@@ -140,7 +142,7 @@
               <input type="submit" value="Đăng nhập">
             </div>
             <div class="signup-link">
-              <a href=/signup">Đăng ký ngay</a>
+              <a href="/signup">Đăng ký ngay</a>
             </div>
           </form>
         </div>

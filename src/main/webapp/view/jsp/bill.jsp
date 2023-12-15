@@ -23,7 +23,6 @@
 
 <body>
 <!-- nav bar -->
-<jsp:include page="header.jsp"/>
 <!-- end of navbar -->
 
 <br><br><br>
@@ -34,11 +33,11 @@
             <table>
                 <tr>
                     <th><b>Tên Phim: </b></th>
-                    <th>${sessionScope.schedule.movie.name}</th>
+                    <th>${sessionScope.chosenSchedule.movie.name}</th>
                 </tr>
                 <tr>
                     <th><b>Giờ Chiếu:</b></th>
-                    <th>${sessionScope.schedule.startTime}</th>
+                    <th>${sessionScope.chosenSchedule.startTime}</th>
                 </tr>
                 <tr>
                     <th><b>Ngày Chiếu:</b></th>
@@ -46,7 +45,7 @@
                 </tr>
                 <tr>
                     <th><b>Tên Phòng:</b></th>
-                    <th>${sessionScope.schedule.room.name}</th>
+                    <th>${sessionScope.chosenSchedule.room.id}</th>
                 </tr>
                 <tr>
                     <th><b>Số Vé:</b></th>
@@ -60,10 +59,9 @@
                         </c:forEach>
                     </th>
                 </tr>
-                </c:forEach>
                 <tr>
                     <th><b>Tiền Vé Đơn:</b></th>
-                    <th>${sessionScope.schedule.price}</th>
+                    <th>${sessionScope.chosenSchedule.price}</th>
                 </tr>
                 <tr>
                     <th><b>Tổng:</b></th>
@@ -71,8 +69,8 @@
                 </tr>
             </table>
             <div style="margin-left:50px">
-                <img src="${sessionScope.schedule.movie.imgURL}" alt="">
-            </div>
+                <img src="${sessionScope.chosenSchedule.movie.imgURL}" alt="">
+            </div>+
         </div>
         <br>
         <a href="/user/bill" class="btn btn-outline-danger btn-block">Thanh Toán</a>
