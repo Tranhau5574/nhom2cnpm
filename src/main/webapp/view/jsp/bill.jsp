@@ -22,13 +22,13 @@
 </head>
 
 <body>
+<jsp:include page="header.jsp"/>
 <!-- nav bar -->
 <!-- end of navbar -->
 
 <br><br><br>
 <div class="container">
         <h2>Thanh toán hóa đơn</h2>
-        <br>
         <div style="display:flex">
             <table>
                 <tr>
@@ -69,7 +69,7 @@
                 </tr>
             </table>
             <div style="margin-left:50px">
-                <img src="${sessionScope.chosenSchedule.movie.imgURL}" alt="">
+                <img src="${sessionScope.chosenSchedule.movie.imgURL}" alt="" width="350px" height="550px">
             </div>
         </div>
         <br>

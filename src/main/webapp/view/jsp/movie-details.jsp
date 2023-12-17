@@ -22,6 +22,7 @@
 </head>
 
 <body>
+    <jsp:include page="header.jsp"/>
 <!-- nav bar -->
 
 <!-- end of navbar -->
@@ -32,7 +33,7 @@
     <br>
     <div style="display:flex">
         <div style="margin-right:50px">
-            <img src="${movie.imgURL}" alt="">
+            <img src="${movie.imgURL}" alt="anh phim" width="300px" height="400px">
             <a href="/user/chooseDate?movieId=${movie.id}" class="btn btn-danger btn-block">Mua Vé</a>
         </div>
         <table>

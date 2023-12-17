@@ -86,7 +86,7 @@
 <body>
     <footer>
         <span class="footer">
-            <img class="logo" src="/src/main/resources/static/image/HUST Cinema (2).png" alt="">
+            <img class="logo" src="/src/main/resources/static/image/HUST Cinema (2).png" alt="logo HustCinema">
 
             <div  id="footer-column">
                 <h1>Liên hệ hợp tác</h1>

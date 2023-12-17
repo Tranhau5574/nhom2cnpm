@@ -68,6 +68,7 @@
     </style>
 </head>
 <body>
+    <jsp:include page="header.jsp"/>
     <!-- nav bar -->
 
     <br><br><br>
@@ -76,7 +77,7 @@
     <h1>Chọn chỗ ngồi</h1>
     <div class="error-message">${sessionScope.bookedError}</div>
     <div>
-        <img class="screen" src="/image/ic-screen.png" alt="Man 12 hinh">
+        <img class="screen" src="/image/ic-screen.png" alt="Man 12 hinh" width="70px">
     </div>
 
     <div class="container">
@@ -208,6 +209,7 @@
 
 
     <!--footer-->
+    <br><br>
     <jsp:include page="footer.jsp"/>
 
 </body>
