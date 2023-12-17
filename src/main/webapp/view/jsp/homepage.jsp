@@ -212,7 +212,7 @@
                     <c:otherwise>
                         <div class="carousel-item">
                             <img src="${movie.posterURL}"
-                                 alt="anh poster phim" width="1100" height="400">
+                                 alt="..." width="500" height="300">
                         </div>
                     </c:otherwise>
                 </c:choose>
