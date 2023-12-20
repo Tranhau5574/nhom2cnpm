@@ -26,12 +26,14 @@
 </head>
 
 <body>
+    <jsp:include page="header.jsp"/>
 <!-- nav bar -->
 
 <!-- end of navbar -->
 
-<br><br><br>
-<div class="container-fluid">
+    <br><br><br>
+    <div class="container-fluid">
+
     <h2>Lịch Sử Mua Vé </h2>
     <br>
     <div>
@@ -60,10 +62,10 @@
 
     </div>
     <br>
-</div>
-<br>
-<br>
-<jsp:include page="footer.jsp"/>
+    </div>
+    <br>
+    <br>
+    <jsp:include page="footer.jsp"/>
 </body>
 
 </html>

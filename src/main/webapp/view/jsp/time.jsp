@@ -17,12 +17,14 @@
 </head>
 
 <body>
+    <jsp:include page="header.jsp"/>
+    <br><br><br>
 <!-- nav bar -->
 
 <!-- end of navbar -->
 
-<br><br><br>
-<div class="container">
+    <br><br><br>
+    <div class="container">
 
     <form action="/user/seats" method="get">
         <h2>Chọn giờ xem phim</h2>
@@ -38,11 +40,9 @@
         <br><br>
         <input type="submit" class="btn btn-outline-danger btn-block">
     </form>
-</div>
-<br><br><br><br><br><br><br>
-<jsp:include page="footer.jsp"/>
-
-
+    </div>
+    <br><br><br><br><br><br><br>
+    <jsp:include page="footer.jsp"/>
 </body>
 
 </html>

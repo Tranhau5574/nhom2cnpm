@@ -17,12 +17,14 @@
 </head>
 
 <body>
+    <jsp:include page="header.jsp"/>
+    <br><br><br>
 <!-- nav bar -->
 
 <!-- end of navbar -->
 
-<br><br><br>
-<div class="container">
+    <br><br><br>
+    <div class="container">
 
     <form action="/user/chooseDate" method="post">
         <h2>Chọn ngày xem phim</h2>
