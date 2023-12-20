@@ -122,11 +122,29 @@
     </style>
 </head>
 <body>
-    <form action="/login" method="post">
-        Tên đăng nhập: <input type="text" name="username" required><br>
-        Mật khẩu: <input type="password" name="password" required><br>
-        <input type="submit" value="Đăng nhập">
-        Đăng nhập: <   Tên đăng nhập: <input type="text" name="username" required><br>
-    </form>
+    <div class="container">
+        <div class="wrapper">
+          <div class="title">
+              <span>Đăng nhập</span>
+          </div>
+          <form action="/login" method="post">
+            <div class="row">
+              <i class="fas fa-user"></i>
+              <input type="text" name="username" placeholder="Tên đăng nhập" required>
+            </div>
+            <div class="row">
+              <i class="fas fa-lock"></i>
+              <input type="password" name="password" placeholder="Mật khẩu" required>
+            </div>
+            <div class="row button">
+              <input type="submit" value="Đăng nhập">
+            </div>
+            <div class="signup-link">
+              <a href=/signup">Đăng ký ngay</a>
+            </div>
+          </form>
+        </div>
+      </div>
 </body>
-</html>
+</html> 
+
