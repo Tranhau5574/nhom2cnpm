@@ -28,34 +28,34 @@
         <h2>Them phim moi</h2>
         <br>
         <p>Ten phim</p>
-        <input type="text" class="btn-block" name="name">
+        <input type="text" class="btn-block" name="name" required>
         <br><br>
         <p>Do dai phim</p>
-        <input type="number" class="btn-block" name="length">
+        <input type="number" class="btn-block" name="length" required>
         <br><br>
         <p>Dao dien</p>
-        <input type="text" class="btn-block" name="director">
+        <input type="text" class="btn-block" name="director" required>
         <br><br>
         <p>Danh sach dien vien chinh</p>
-        <input type="text" class="btn-block" name="actors">
+        <input type="text" class="btn-block" name="actors" required>
         <br><br>
         <p>The loai</p>
-        <input type="text" class="btn-block" name="categories">
+        <input type="text" class="btn-block" name="categories" required>
         <br><br>
         <p>Link anh nho</p>
-        <input type="text" class="btn-block" name="imgURL">
+        <input type="text" class="btn-block" name="imgURL" required>
         <br><br>
         <p>Link poster</p>
-        <input type="text" class="btn-block" name="posterURL">
+        <input type="text" class="btn-block" name="posterURL" required>
         <br><br>
         <p>Link embed trailer</p>
-        <input type="text" class="btn-block" name="trailerURL">
+        <input type="text" class="btn-block" name="trailerURL" required>
         <br><br>
         <p>Ngay ra mat</p>
-        <input type="date" class="btn-block" name="release-date">
+        <input type="date" class="btn-block" name="release-date" required>
         <br><br>
         <p>Mo ta phim</p>
-        <input type="text" class="btn-block" name="short-description">
+        <input type="text" class="btn-block" name="short-description" required>
         <br><br>
 
         <input type="submit" class="btn btn-outline-danger btn-block">

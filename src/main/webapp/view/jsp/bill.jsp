@@ -55,7 +55,7 @@
                     <th><b>Danh sách vé:</b></th>
                     <th>
                         <c:forEach items="${listSeats}" var="seat">
-                        <div> ${seat} </div>
+                        <div> | ${seat} | </div>
                         </c:forEach>
                     </th>
                 </tr>

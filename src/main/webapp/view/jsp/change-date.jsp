@@ -27,25 +27,31 @@
 
 <br><br><br>
 <div class="container">
-    <h2>Sua lich chieu</h2>
+    <h2>Cac ngay chieu cua phim:<br> ${movie.name}</h2>
     
     <br>
 
-    <div style="display:flex">
-        <table>
-            <c:forEach items="${movieList}" var="movie">
+    <div style="display: flex;">
+        
+        <c:forEach items="${dateList}" var="date">
+            <table>    
                 <tr>
-                    <th>${movie.id}</th>
-                    <th>${movie.name}</th>
-                    <th><a href="/admin/schedule?movieId=${movie.id}" class="btn btn-outline-danger btn-block">Thay doi lich chieu</a></th>
-                    <th><a href="/admin/deleteMovie?movieId=${movie.id}" class="btn btn-outline-danger btn-block">Xoa phim</a></th>
+                    <th>
+                        <div style="margin-right: 100;">${date}</div>                           
+                    </th>
+                    <td>
+                        <a href="/admin/schedule/deleteDate?movieId=${movie.id}&date=${date}" class="btn btn-outline-danger btn-block">Xoa tat ca lich trong ngay</a>
+                    </td>
+                    <td>
+                        <a href="/admin/schedule/changeDate?movieId=${movie.id}&date=${date}" class="btn btn-outline-danger btn-block">Xem lich chieu trong ngay</a>
+                    </td>
                 </tr>
-            </c:forEach>  
-        </table>
+            </table>
+        </c:forEach>  
         
     </div>
     <br><br>
-    <a href="/admin/addMovie" class="btn btn-outline-danger btn-block">Them phim</a>
+    <a href="/admin/addDate" class="btn btn-outline-danger btn-block">Them ngay chieu</a>
     <br>
 
 </div>

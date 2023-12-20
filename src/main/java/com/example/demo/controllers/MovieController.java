@@ -8,16 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import com.example.demo.Services.MovieService;
 import com.example.demo.entities.Movie;
-import com.example.demo.entities.User;
 
 import java.time.LocalDate;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 
 @Controller
 public class MovieController {
@@ -67,7 +61,6 @@ public class MovieController {
         newMovie.setReleaseDate(LocalDate.parse(release_date));
         newMovie.setShortDescription(short_description);
         newMovie.setLength(length);
-
 
         Movie createdMovie = movieService.save(newMovie);
         return "redirect:/admin/movie";
