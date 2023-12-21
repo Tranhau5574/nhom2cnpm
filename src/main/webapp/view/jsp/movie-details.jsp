@@ -22,8 +22,9 @@
 </head>
 
 <body>
+    <jsp:include page="header.jsp"/>
 <!-- nav bar -->
-<jsp:include page="header.jsp"/>
+
 <!-- end of navbar -->
 
 <br><br><br>
@@ -32,17 +33,8 @@
     <br>
     <div style="display:flex">
         <div style="margin-right:50px">
-            <img src="${movie.imgURL}" alt="">
-            <%--Nếu chưa đăng nhập mà đã click vào nút mua vé thì trả về trang có nút có class btn-buy-ticket-not-signed-in để
-                        toggle cái form đăng nhập--%>
-            <c:choose>
-                <c:when test="${sessionScope.jwtResponse eq null}">
-                    <button  class="btn btn-danger btn-block btn-buy-ticket-not-signed-in">Mua vé</button>
-                </c:when>
-                <c:otherwise>
-                    <a href="/user/chooseDate?movieId=${movie.id}" class="btn btn-danger btn-block">Mua Vé</a>
-                </c:otherwise>
-            </c:choose>
+            <img src="${movie.imgURL}" alt="anh phim" width="300px" height="400px">
+            <a href="/user/chooseDate?movieId=${movie.id}" class="btn btn-danger btn-block">Mua Vé</a>
         </div>
         <table>
             <tr>
@@ -54,7 +46,7 @@
                 <th>${movie.director}</th>
             </tr>
             <tr>
-                <th><b>Diễn Viên:</b></th>
+                <th><b style="font-family: 'Arial', sans-serif;">Diễn Viên:</b></th>
                 <th>${movie.actors}</th>
             </tr>
             <tr>
@@ -67,17 +59,8 @@
             </tr>
             <tr>
                 <th><b>Thời Lượng:</b></th>
-                <th>${movie.duration} phút</th>
+                <th>${movie.length} phút</th>
             </tr>
-            <tr>
-                <th><b>Ngôn Ngữ:</b></th>
-                <th>${movie.language}</th>
-            </tr>
-            <tr>
-                <th><b>Rated:</b></th>
-                <th>${movie.rated}</th>
-            </tr>
-
         </table>
 
 
@@ -93,10 +76,6 @@
                     allowfullscreen>
             </iframe>
         </div>
-        <div>
-            <h1>Giới Thiệu:</h1>
-            <p>${movie.longDescription}</p>
-        </div>
     </div>
     <br>
 
@@ -104,28 +83,9 @@
     <br>
 </div>
 <br>
-<br>
+<br>    
+<!--footer-->
 <jsp:include page="footer.jsp"/>
-
-<%--Nếu chưa đăng nhập mà đã click vào nút mua vé thì trả về trang có function để
-toggle cái form đăng nhập--%>
-<c:choose>
-    <c:when test="${sessionScope.jwtResponse eq null}">
-        <script>
-            $(document).ready(function() {
-                $('.btn-buy-ticket-not-signed-in').on('click', function () {
-                    $('#modalLoginForm').modal('show');
-                })
-                // $('#close').on('click',function(){
-                //     $('#modalLoginForm').modal({ show: false});
-                // })
-            })
-        </script>
-    </c:when>
-    <c:otherwise>
-
-    </c:otherwise>
-</c:choose>
 </body>
 
 </html>

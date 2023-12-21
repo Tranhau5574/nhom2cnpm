@@ -53,7 +53,7 @@ public class ScheduleController {
         
         HttpSession session = request.getSession();
         Integer movieId = (Integer)session.getAttribute("movieId");
-        String chosenDate = request.getParameter("chosentDate");
+        String chosenDate = request.getParameter("chosenDate");
         session.setAttribute("chosenDate", chosenDate);
 
         List<String> listStartTimes = scheduleService.getStartTimes(

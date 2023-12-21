@@ -26,9 +26,9 @@ public class TicketController {
     public String displayHistoryPage(Model model, HttpServletRequest request){
         HttpSession session = request.getSession();
         Integer userId = ((User)session.getAttribute("currentUser")).getId();
-        List<Ticket> ticketList = ticketService.getTicketsByUserId(userId);
+        List<Ticket> listTickets = ticketService.getTicketsByUserId(userId);
 
-        model.addAttribute("ticketList",ticketList);
+        model.addAttribute("listTickets",listTickets);
 
         return "history";
     }

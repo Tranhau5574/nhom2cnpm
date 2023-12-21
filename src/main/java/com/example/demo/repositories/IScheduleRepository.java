@@ -11,16 +11,20 @@ import org.springframework.data.repository.query.Param;
 import com.example.demo.entities.Schedule;
 
 public interface IScheduleRepository extends JpaRepository<Schedule, Integer>{
+
+    @Query("SELECT s FROM Schedule s WHERE s.movie.id=:movieId")    
+    List<Schedule> findAllByMovieId(@Param("movieId") Integer movieId);
         
     @Query("SELECT DISTINCT s.startTime FROM Schedule s WHERE s.movie.id=:movieId" 
             + " AND s.startDate=:startDate")
-    List<LocalTime> getStartTimeByMovie_IdAndStartDate(@Param("movieId") Integer movieId
-            , @Param("startDate") LocalDate startDate);
+    List<LocalTime> getStartTimeByMovie_IdAndStartDate(
+                  @Param("movieId")   Integer movieId
+                , @Param("startDate") LocalDate startDate);
 
     @Query("SELECT s FROM Schedule s WHERE s.movie.id=:movieId" 
             + " AND s.startDate=:startDate AND s.startTime=:startTime")
     Schedule findSchedulesByMovie_IdAndStartDateAndStartTime(
-                          Integer movieId
-                        , LocalDate startDate
-                        , LocalTime startTime);
+                  @Param("movieId")   Integer movieId
+                , @Param("startDate") LocalDate startDate
+                , @Param("startTime") LocalTime startTime);
 }

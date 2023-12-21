@@ -17,10 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.Role;
 import com.example.demo.entities.User;
+import com.example.demo.security.service.RoleService;
 import com.example.demo.security.service.User_UserDetails_Service;
 
 @Controller
 public class Login_Register_Controller {
+
+    @Autowired
+    RoleService roleService;
 
     @Autowired
     User_UserDetails_Service user_UserDetails_Service;
@@ -43,7 +47,12 @@ public class Login_Register_Controller {
             String currentUserName = ((UserDetails)(SecurityContextHolder.getContext().getAuthentication().getPrincipal())).getUsername();
             User currentUser = (user_UserDetails_Service.findByUsername(currentUserName)).get(); 
             session.setAttribute("currentUser", currentUser);
-            return "redirect:/";
+            if((currentUser.getRoles()).size() == 1){
+                return "redirect:/";
+            }
+            else{
+                return "redirect:/";
+            }
         }
     }
 
@@ -56,6 +65,7 @@ public class Login_Register_Controller {
     public String logOut(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(false);
         if (session != null) {
+            session.removeAttribute("currentUser");
             session.invalidate();
         }
         SecurityContextHolder.clearContext();
@@ -80,8 +90,7 @@ public class Login_Register_Controller {
             newUser.setPassword(rawPassword);
 
             Set<Role> roles = new HashSet<>();
-            Role roleClient = new Role();
-            roleClient.setName("ROLE_ADMIN");
+            Role roleClient = roleService.findByName("ROLE_CLIENT");
             roles.add(roleClient);
             newUser.setRoles(roles);
             user_UserDetails_Service.save(newUser);

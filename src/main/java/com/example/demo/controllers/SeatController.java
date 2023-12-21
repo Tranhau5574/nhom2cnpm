@@ -25,19 +25,22 @@ public class SeatController {
     @Autowired 
     private ScheduleService scheduleService;
 
-    @PostMapping
+    @GetMapping
     public String displaySeatChoosing(HttpServletRequest request, Model model){
-        
+                
         //Thêm Schedule vào session
         HttpSession session = request.getSession();
         Integer movieId = (Integer)session.getAttribute("movieId");
         String chosenDate = (String)session.getAttribute("chosenDate");
         String chosenTime = request.getParameter("chosenTime");
         Schedule chosenSchedule = scheduleService.getSchedules(movieId, chosenDate, chosenTime);
+        
+        System.out.println("da den buoc 1");
         session.setAttribute("chosenSchedule", chosenSchedule);
 
         List<SeatDTO> listSeatFiltered = seatService.getSeatsByScheduleId(chosenSchedule.getId());
-    
+        
+        
         SeatDTO[] listSeatDTOS = new SeatDTO[listSeatFiltered.size()];
         for(int i = 0; i < listSeatFiltered.size(); i++){
             listSeatDTOS[i] = listSeatFiltered.get(i);
@@ -59,7 +62,7 @@ public class SeatController {
         model.addAttribute("listC",listC);
         model.addAttribute("listD",listD);
         model.addAttribute("listE",listE);
-
-        return "seat";
+       
+         return "seats";
     }
 }

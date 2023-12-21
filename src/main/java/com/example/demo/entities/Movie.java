@@ -22,6 +22,7 @@ public class Movie {
     
     private String name;
     private String imgURL;
+    private String posterURL;
     private String trailerURL;
     private String shortDescription;
     private String director;

@@ -1,0 +1,29 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+def visualize(N):
+    N = int(N)
+    wk = [float]
+    for k in range(1, N+1):
+        wki = k * math.pi / N
+        wk.append(wki)
+
+    for n in range(-5, 5):
+        Rw = 0.0
+        if n == 0 or n == 1:
+            Rw = 1.0
+
+        for k in range(1, N+1):
+            Rw += (2 * math.cos(wk[k] * n - wk[k]))
+
+        plt.plot([n, n], [0, Rw / (2 * N)])
+
+    plt.xlabel("n")
+    plt.ylabel("rect2(n)")
+    plt.xticks(range(-5, 5))
+    plt.show()
+
+if __name__ == "__main__":
+    N = input("N = ")
+    visualize(N)
