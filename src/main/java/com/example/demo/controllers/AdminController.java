@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,10 +40,11 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/schedule", method = RequestMethod.GET)
-    public String changeScheduleDate(Model model, HttpServletRequest request){
-        Integer selectedMovieId = Integer.parseInt(request.getParameter("selectedMovieId"));
-        List<Schedule> scheduleList = scheduleService.findAllByMovieId(selectedMovieId);
-        model.addAttribute("scheduleList", scheduleList);
-        return "changeScheduleDate";
+    public String changeScheduleDate(@RequestParam("movieId") Integer movieId, Model model){
+        Movie movie = movieService.getMovieById(movieId);
+        List<LocalDate> dateList = scheduleService.getStartDate(movieId);
+        model.addAttribute("dateList", dateList);
+        model.addAttribute("movie", movie);
+        return "change-date";
     }
 }

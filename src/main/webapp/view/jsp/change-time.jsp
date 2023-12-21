@@ -22,31 +22,7 @@
 </head>
 
 <body>
-<!-- nav bar -->
-<!-- end of navbar -->
 
-<br><br><br>
-<div class="container">
-    <h2>Sua lich chieu</h2>
-    
-    <br>
-
-    <div style="display:flex">
-        <table>
-            <c:forEach items="${movieList}" var="movie">
-                <tr>
-                    <th>${movie.id}</th>
-                    <th>${movie.name}</th>
-                    <th><a href="/admin/schedule?movieId=${movie.id}" class="btn btn-outline-danger btn-block">Thay doi lich chieu</a></th>
-                    <th><a href="/admin/deleteMovie?movieId=${movie.id}" class="btn btn-outline-danger btn-block">Xoa phim</a></th>
-                </tr>
-            </c:forEach>  
-        </table>
-        
-    </div>
-    <br><br>
-    <a href="/admin/addMovie" class="btn btn-outline-danger btn-block">Them phim</a>
-    <br>
 
 </div>
 <br>

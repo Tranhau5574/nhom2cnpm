@@ -33,9 +33,8 @@ public class SeatController {
         Integer movieId = (Integer)session.getAttribute("movieId");
         String chosenDate = (String)session.getAttribute("chosenDate");
         String chosenTime = request.getParameter("chosenTime");
+
         Schedule chosenSchedule = scheduleService.getSchedules(movieId, chosenDate, chosenTime);
-        
-        System.out.println("da den buoc 1");
         session.setAttribute("chosenSchedule", chosenSchedule);
 
         List<SeatDTO> listSeatFiltered = seatService.getSeatsByScheduleId(chosenSchedule.getId());

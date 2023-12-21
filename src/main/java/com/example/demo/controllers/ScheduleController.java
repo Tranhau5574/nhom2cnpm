@@ -61,4 +61,11 @@ public class ScheduleController {
         model.addAttribute("listStartTimes", listStartTimes);
         return "time";
     }
+
+    @RequestMapping(value = "/admin/schedule/deleteDate", method = RequestMethod.GET)
+    public String deleteDate(@RequestParam("movieId") Integer movieId, @RequestParam("date") String date){
+        scheduleService.deleteBystartDate(movieId,date);
+        return "redirect:/admin/schedule?movieId=" + movieId;
+    }
+        
 }

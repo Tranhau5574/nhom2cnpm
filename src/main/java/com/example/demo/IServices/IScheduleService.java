@@ -11,5 +11,9 @@ public interface IScheduleService {
 
     List<String> getStartTimes(Integer movieId, LocalDate startDate);
 
+    List<LocalDate>getStartDate(Integer movieId);
+
     Schedule getSchedules(Integer movieId, String startDate, String startTime);
+
+    void deleteBystartDate(Integer movieId, String startDate);
 }
