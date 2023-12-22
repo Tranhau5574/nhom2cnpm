@@ -103,7 +103,7 @@
 <body>
     <nav>
         <div class="logo-container">
-            <img src="/src/main/resources/static/image/HUST Cinema (2).png" alt="Logo" class="logo">
+            <img src="/image/HUSTCinemaLogo.png" alt="..." class="logo">
             <div class="site-name">HUSTCINEMA</div>
         </div>
         <div>
@@ -126,13 +126,13 @@
             <c:choose>
                 <c:when test="${sessionScope.currentUser eq null}">
                     <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li><a href="/login" class="login-btn" style="height:30px;padding: 0 0 5px 0;">Đăng nhập</a></li>
+                        <li style="padding: 0 0 5px 0;"><a href="/login" class="login-btn" style="height:30px;">Đăng nhập</a></li>
                         <li><a href="/register" class="register-btn" style="height:30px;">Đăng ký</a></li>
                     </ul>
                 </c:when>
             <c:otherwise>
                 <ul style="list-style: none; padding: 0; margin: 0;">
-                    <li><a style="color: gold;width: 165px;height:30px;justify-content: center;">Hello ${sessionScope.currentUser.username}</a></li>
+                    <li><p style="color: gold;text-align: center;justify-content: center;">Hello ${sessionScope.currentUser.username}</p></li>
                     <br>
                     <li><a href="/logout" class="logout-btn" style="height:30px;">Đăng xuất</a></li>
                 </ul>

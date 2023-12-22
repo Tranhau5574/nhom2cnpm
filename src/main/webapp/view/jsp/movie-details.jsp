@@ -15,8 +15,9 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <style type="text/css">
+
         th {
-            padding: 0px 20px 5px 0px;
+            padding: 0px 20px 0px 0px;
         }
     </style>
 </head>
@@ -34,31 +35,32 @@
     <div style="display:flex">
         <div style="margin-right:50px">
             <img src="${movie.imgURL}" alt="anh phim" width="300px" height="400px">
-            <a href="/user/chooseDate?movieId=${movie.id}" class="btn btn-danger btn-block">Mua Vé</a>
+            <a href="/user/chooseDate?movieId=${movie.id}" class="btn btn-danger btn-block" style="margin-top: 5px;">Mua Vé</a>
         </div>
         <table>
+            <BR></BR>
             <tr>
-                <th><b>Tên Phim: </b></th>
+                <th><h6><b>TÊN PHIM:</b></h6></th>
                 <th>${movie.name}</th>
             </tr>
             <tr>
-                <th><b>Đạo diễn:</b></th>
+                <th><h6><b>ĐẠO DIỄN:</b></h6></th>
                 <th>${movie.director}</th>
             </tr>
             <tr>
-                <th><b style="font-family: 'Arial', sans-serif;">Diễn Viên:</b></th>
+                <th><h6><b>DIỄN VIÊN:</b></h6></th>
                 <th>${movie.actors}</th>
             </tr>
             <tr>
-                <th><b>Ngày Khởi Chiếu:</b></th>
+                <th><h6><b>NGÀY KHỞI CHIẾU:</b></h6></th>
                 <th>${movie.releaseDate}</th>
             </tr>
             <tr>
-                <th><b>Thể Loại:</b></th>
+                <th><h6><b>THỂ LOẠI:</b></h6></th>
                 <th>${movie.categories}</th>
             </tr>
             <tr>
-                <th><b>Thời Lượng:</b></th>
+                <th><h6><b>THỜI LƯỢNG:</b></h6></th>
                 <th>${movie.length} phút</th>
             </tr>
         </table>

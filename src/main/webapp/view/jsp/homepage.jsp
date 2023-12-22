@@ -1,6 +1,7 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -14,11 +15,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-        /* carousel */
-        /* Make the image fully responsive */
-        a{
-            width: 100px;
-        }
         .carousel-inner img {
             width: 100%;
             height: 100%;
@@ -175,6 +171,52 @@
                 background: #f1f1f1;
             }
         }
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            position: relative; 
+            margin-bottom: 30px; 
+            padding-bottom: 50px; 
+        }
+
+        .card img {
+            width: 100%;
+            height: 450px; 
+            object-fit: cover; 
+        }
+
+        .card-container {
+            padding: 2px 16px;
+        }
+
+        .card-footer {
+            color:white;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 5px 5px;
+            box-sizing: border-box; 
+        }
+        .carousel-indicators img{
+            width: 100%; /* Chiều rộng tối đa so với container */
+            height: 100%; /* Chiều cao tối đa so với container */
+            object-fit: cover;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 600px; 
+            object-fit: cover;
+        }
+
+        .carousel-item {
+            width: 100%;
+            height: 600px; /* Đảm bảo chiều cao này phù hợp với chiều cao của .carousel-item img */
+        }
+
+
     </style>
 
     <title>Trang chủ</title>
@@ -182,47 +224,50 @@
 
 <body>
 
-<!-- content -->
+
 <div class="container">
     <jsp:include page="header.jsp"/>
     <br>
     <br>
-    <h1>Phim Mới Chiếu</h1>
+    <h2><b>PHIM MỚI CHIẾU</b></h2>
     <div id="demo" class="carousel slide" data-ride="carousel">
-
-        <!-- Indicators -->
         <ul class="carousel-indicators">
             <li data-target="#demo" data-slide-to="0" class="active"></li>
             <li data-target="#demo" data-slide-to="1"></li>
             <li data-target="#demo" data-slide-to="2"></li>
             <li data-target="#demo" data-slide-to="3"></li>
             <li data-target="#demo" data-slide-to="4"></li>
+            <li data-target="#demo" data-slide-to="5"></li>
         </ul>
 
-        <!-- The slideshow -->
         <div class="carousel-inner">
             <c:forEach items="${movies}" var="movie" varStatus="count">
                 <c:choose>
                     <c:when test="${count.index eq 0}">
                         <div class="carousel-item active">
                             <img src="${movie.posterURL}" 
-                                 alt="anh poster phim" width="1100" height="400">
+                                 alt="anh poster phim" >
                         </div>
                     </c:when>
                     <c:otherwise>
                         <div class="carousel-item">
                             <img src="${movie.posterURL}"
-                                 alt="..." width="500" height="300">
+                                 alt="..." >
                         </div>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
         </div>
 
+        <button class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
     </div>
-    <!-- end of carousel -->
+    
 
-    <!-- movie selections-->
     <br>
     <br>
 
@@ -237,32 +282,29 @@
         </div>
         <div class="d-flex justify-content-between flex-wrap">
             <c:forEach items="${movies}" var="movie">
-                <div class="card movie-item" style="width:300px">
-                    <img class="card-img-top img-movie"
-                        src="${movie.imgURL}"
-                        alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">${movie.name}</h4>
-                        <p class="card-text">Thể loại: ${movie.categories}</p>
+                    <div class="card" style="width: 300px;">
+                    <img src="${movie.imgURL}" alt="Wonka" style="width:100%">
+                    <div class="card-container">
+                        <h4><b>${movie.name}</movie></b></h4>
+                        <p>Thể loại: ${movie.categories}</p>
+                    </div>
+                    <div class="card-footer">
                         <a href="/movie-details?movieId=${movie.id}" class="btn btn-outline-warning"
                         style="width: 100px;margin-right:50px;">Chi tiết</a>
-                            <!-- Nếu chưa đăng nhập mà đã click vào nút mua vé thì trả về trang có nút có class btn-buy-ticket-not-signed-in để
-                            toggle cái form đăng nhập -->
+                
                         <c:choose>
                             <c:when test="${sessionScope.currentUser.username eq null}">
-                                <a href="/login" class="btn btn-outline-danger" style="width: 100px;">Mua vé</a>
+                                <a href="/login" class="btn btn-outline-danger" style="width: 100px;padding: none;">Mua vé</a>
                             </c:when>
                             <c:otherwise>
                                 <a href="/user/chooseDate?movieId=${movie.id}" class="btn btn-outline-danger" style="width: 100px;" >Mua vé</a>
                             </c:otherwise>
                         </c:choose>
                     </div>
-                </div>
+                    </div>
             </c:forEach>
 
-
         </div>
-    <!-- end of movie selections -->
 </div>
 </div>
 
@@ -271,3 +313,5 @@
     <jsp:include page="footer.jsp"/>
   </body> 
 </html>
+
+

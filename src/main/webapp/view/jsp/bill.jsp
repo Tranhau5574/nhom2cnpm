@@ -29,14 +29,14 @@
 <br><br><br>
 <div class="container">
         <h2>Thanh toán hóa đơn</h2>
-        <div style="display:flex">
+        <div style="display:flex; justify-content: center;">
             <table>
                 <tr>
-                    <th><b>Tên Phim: </b></th>
+                    <th><b>Tên phim: </b></th>
                     <th>${sessionScope.chosenSchedule.movie.name}</th>
                 </tr>
                 <tr>
-                    <th><b>Giờ Chiếu:</b></th>
+                    <th><b>Giờ chiếu:</b></th>
                     <th>${sessionScope.chosenSchedule.startTime}</th>
                 </tr>
                 <tr>
@@ -72,6 +72,7 @@
                 <img src="${sessionScope.chosenSchedule.movie.imgURL}" alt="" width="350px" height="550px">
             </div>
         </div>
+
         <br>
         <a href="/user/bill" class="btn btn-outline-danger btn-block">Thanh Toán</a>
 </div>

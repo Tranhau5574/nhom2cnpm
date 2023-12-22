@@ -33,7 +33,7 @@
 
         #footer-column {
             flex: auto;
-            margin-left: 50px;
+            margin-left: 10px;
             right: 60px;
         }
 
@@ -61,7 +61,6 @@
             height: 2px;
             width: 50%;
             background-color: black;
-            top: 23%; /* Chuyển đường thẳng xuống giữa */
             transform: translateX(50%); /* Duy trì độ chính xác trung tâm */
         }
         a {
@@ -86,7 +85,7 @@
 <body>
     <footer>
         <span class="footer">
-            <img class="logo" src="../../../resources/static/image/HUST Cinema (2).png" alt="Logo HustCinema">
+            <img class="logo" src="/image/HUSTCinemaLogo.png" alt="Logo HustCinema" >
 
             <div  id="footer-column">
                 <h1>Liên hệ hợp tác</h1>
@@ -115,7 +114,7 @@
         </span>
 
         
-        <!-- <div class="divider"></div> -->
+        <div class="divider"></div>
         
         <div class="brand-info">
             <h1>HustCinema</h1>
