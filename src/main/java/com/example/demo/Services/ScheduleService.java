@@ -2,6 +2,7 @@ package com.example.demo.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.IServices.IScheduleService;
 import com.example.demo.entities.Schedule;
@@ -13,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 
 @Service
 public class ScheduleService implements IScheduleService {
@@ -51,6 +53,13 @@ public class ScheduleService implements IScheduleService {
     }
 
     @Override
+    @Transactional
+    public void deleteById(Integer scheduleId) {
+        scheduleRepository.deleteById(scheduleId);
+    }
+
+    @Override
+    @Transactional
     public void deleteBystartDate(Integer movieId, String startDate) {
         scheduleRepository.deleteByMovie_IdAndStartDate(movieId, LocalDate.parse(startDate));
     }

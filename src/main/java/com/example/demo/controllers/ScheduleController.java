@@ -122,4 +122,12 @@ public class ScheduleController {
         }
         return "/admin/schedule/time?movieId="+ movieId + "&date=" + date + "&error" + error;                   
     }
+
+    @RequestMapping(value = "/admin/schedule/time/delete", method = RequestMethod.GET)
+    public String deleteTime( @RequestParam("scheduleId") Integer scheduleId
+                            , @RequestParam("movieId") Integer movieId
+                            , @RequestParam("date") String date){
+        scheduleService.deleteById(scheduleId);
+        return "/admin/schedule/time?movieId="+ movieId + "&date=" + date;
+    }
 }
