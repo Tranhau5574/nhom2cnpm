@@ -15,6 +15,11 @@
         .logo {
             width: 50px;
             height: 50px;
+           
+                border-radius: 15px 15px 15px 15px;
+          
+    
+
         }
 
         body {
@@ -87,7 +92,7 @@
 <body>
     <footer>
         <span class="footer">
-            <img class="logo" src="/image/HUSTCinemaLogo.png" alt="Logo HustCinema" >
+            <img class="logo" src="/image/H.png" alt="Logo HustCinema" >
 
             <div  id="footer-column">
                 <h1>Liên hệ hợp tác</h1>
