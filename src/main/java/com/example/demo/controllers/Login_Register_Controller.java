@@ -49,6 +49,7 @@ public class Login_Register_Controller {
             session.setAttribute("currentUser", currentUser);
             if((currentUser.getRoles()).size() == 1){
                 if(currentUser.getRoles().iterator().next().getName() == "ROLE_ADMIN"){
+                    System.out.println("ThienLaAdmin");
                     return "redirect:/admin";
                 }
                 return "redirect:/";

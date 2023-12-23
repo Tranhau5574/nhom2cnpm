@@ -34,7 +34,7 @@ public class MovieController {
     }
     
     @RequestMapping(value = "/admin/addMovie", method = RequestMethod.GET)
-    public String addMoviePage(@RequestParam Integer movieId){
+    public String addMoviePage(){
         return "addMoviePage";
     }
 
