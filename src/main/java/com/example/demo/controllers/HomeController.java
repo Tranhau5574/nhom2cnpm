@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import static org.mockito.ArgumentMatchers.matches;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +34,8 @@ public class HomeController {
     
     @PostMapping("/")
     public String findMovies(Model model, HttpServletRequest request){
-        model.addAttribute("movie", movieService.getMovieByName(request.getParameter("movie-name")));
-        return "homepage";
+        Movie movieFound = movieService.getMovieByName(request.getParameter("movie-name"));
+        Integer movieId = movieFound.getId();
+        return "redirect:/movie-details?movieId=" + movieId;
     }
 }
