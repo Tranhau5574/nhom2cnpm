@@ -43,6 +43,8 @@ public interface IScheduleRepository extends JpaRepository<Schedule, Integer>{
                   @Param("movieId")   Integer movieId
                 , @Param("startDate") LocalDate startDate);
 
+    void deleteById(Integer id);
+
     @Query("SELECT s FROM Schedule s WHERE s.room.id=:roomId" 
             + " AND s.startDate=:startDate AND s.startTime=:startTime")
     Optional<Schedule> findByRoomAndTimeAndDate(

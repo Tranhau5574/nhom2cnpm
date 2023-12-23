@@ -24,9 +24,14 @@ public class AdminController {
     ScheduleService scheduleService;
 
     @RequestMapping(value = "/admin", method = RequestMethod.POST)       
-    public String showPage(@RequestParam String roleSelected){
-        if(roleSelected == "option1") return "AdminPage";
+    public String roleChosen(@RequestParam String roleSelected){
+        if(roleSelected == "option1") return "admin";
         else return "redirect:/";
+    }
+
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)       
+    public String showAdminPage(){
+        return "admin";
     }
 
     @RequestMapping(value = "/admin/movie", method = RequestMethod.GET)

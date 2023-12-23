@@ -40,7 +40,7 @@
                             <div style="margin-right: 100;">${schedule.room.id}</div>                            
                         </th>
                         <td>
-                            <a href="/admin/schedule/time/delete?movieId=${movie.id}&date=${date}&time=${schedule.startTime}" 
+                            <a href="/admin/schedule/time/delete?movieId=${movie.id}&date=${date}&scheduleId=${schedule.id}" 
                             class="btn btn-outline-danger btn-block">Xóa lịch</a>
                         </td>
                     </tr>

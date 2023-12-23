@@ -19,6 +19,8 @@ public interface IScheduleService {
 
     void deleteBystartDate(Integer movieId, String startDate);
 
+    void deleteById(Integer scheduleId);
+
     Schedule saveNewDate(String date, Integer movieId);
 
     List<Schedule> getSchedulesByMovie_IdAndStartDate(Integer movieId, String startDate);
