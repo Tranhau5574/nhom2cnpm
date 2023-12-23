@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HUSTCINEMA</title>
@@ -26,9 +27,14 @@
         .logo-container {
             display: flex;
             align-items: center;
+            
         }
+        .logo-container .logo {
+            border-radius: 15px 15px 15px 15px;
+      
 
-        .logo {
+        }
+        .las la-film {
             width: 40px;
             height: 40px;
             margin-right: 10px;
@@ -103,7 +109,7 @@
 <body>
     <nav>
         <div class="logo-container">
-            <img src="/image/HUSTCinemaLogo.png" alt="..." class="logo">
+            <img src="/image/H.png" alt="..." class="logo">
             <div class="site-name">HUSTCINEMA</div>
         </div>
         <div>
