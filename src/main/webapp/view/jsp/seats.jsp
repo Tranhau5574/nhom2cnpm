@@ -6,6 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <title>Chọn chỗ ngồi</title>
     <style>
         .error-message {
@@ -46,23 +48,6 @@
         /* Hình ảnh tùy chỉnh cho checkbox được chọn */
         input[type="checkbox"]:checked + label {
             background-image: url('/image/seat-process-normal.png'); 
-        }
-
-        /* CSS để định dạng nút submit */
-        .submit-btn {
-            display: block;
-            margin: auto;
-            background-color: red;
-            color: white;
-            padding: 10px 100px; /* Điều chỉnh theo nhu cầu */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        /* Hover effect */
-        .submit-btn:hover {
-            background-color: darkred;
         }
 
     </style>
@@ -203,7 +188,7 @@
                 </tr>
             </table>
 
-            <input type="submit" class="submit-btn" value="Tiếp tục">
+            <input type="submit" class="btn btn-outline-danger btn-block" value="Tiếp tục">
         </form>
     </div>
 
