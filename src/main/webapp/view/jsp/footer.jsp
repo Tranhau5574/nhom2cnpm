@@ -19,8 +19,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: rgb(120, 120, 111);
-            box-shadow: 0 0 10px #ffffff;"
+            background-color: whitesmoke;
             color: black;
         }
 
@@ -30,6 +29,8 @@
             text-align: left;
             padding: 10px;
             margin-top: 10px;
+            background-color: rgb(120, 120, 111);
+            box-shadow: 0 0 10px #ffffff;
         }
 
         #footer-column {

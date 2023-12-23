@@ -27,8 +27,13 @@
         .logo-container {
             display: flex;
             align-items: center;
+            
         }
+        .logo-container .logo {
+            border-radius: 15px 15px 15px 15px;
+      
 
+        }
         .las la-film {
             width: 40px;
             height: 40px;
@@ -104,7 +109,7 @@
 <body>
     <nav>
         <div class="logo-container">
-            <img src="/image/HUSTCinemaLogo.png" alt="..." class="logo">
+            <img src="/image/H.png" alt="..." class="logo">
             <div class="site-name">HUSTCINEMA</div>
         </div>
         <div>
