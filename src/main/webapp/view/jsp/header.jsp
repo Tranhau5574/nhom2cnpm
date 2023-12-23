@@ -27,13 +27,22 @@
         .logo-container {
             display: flex;
             align-items: center;
-            
+            line-height: 0.5;
+            text-align: center;
+            .logo {
+                width: 55px;
+                height: 55px;
+                margin-bottom: 12px;
+                border-radius: 15px 15px 15px 15px;
+            }
         }
-        .logo-container .logo {
-            border-radius: 15px 15px 15px 15px;
-      
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+          }
+        
 
-        }
+        
         .las la-film {
             width: 40px;
             height: 40px;
@@ -41,8 +50,10 @@
         }
 
         .site-name {
-            font-size: 2.5em;
+            font-size: 35px;
             font-weight: bold;
+            text-align: left;
+            font-family: "Time New Roman"
         }
 
         .menu {
@@ -109,8 +120,11 @@
 <body>
     <nav>
         <div class="logo-container">
-            <img src="/image/H.png" alt="..." class="logo">
-            <div class="site-name">HUSTCINEMA</div>
+            <img src="https://res.cloudinary.com/ddfhkjugr/image/upload/v1703324741/H_ivhukm.png" href="/" alt="..." class="logo">
+            <div class="site-name">
+                <p>HUST</p>
+                <p >CINEMA</p> 
+                </div>
         </div>
         <div>
             <c:choose>
