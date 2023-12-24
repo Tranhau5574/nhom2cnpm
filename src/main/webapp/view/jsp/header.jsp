@@ -168,9 +168,9 @@
                         <li style="padding: 0 0 5px 0;"><a href="/login" class="login-btn" style="height:30px;">Đăng nhập</a></li>
                         <li><a href="/register" class="register-btn" style="height:30px;">Đăng ký</a></li>
                     </ul>
-                    <button  class="NavBar_loginBtn__5DxZL">
+                    <!-- <button  class="NavBar_loginBtn__5DxZL">
                         <a href="/login"> Đăng nhập</a></button>
-                    <button class="NavBar_registerBtn__bQERL">Đăng ký</button>
+                    <button class="NavBar_registerBtn__bQERL">Đăng ký</button> -->
                 </c:when>
             <c:otherwise>
                 <ul style="list-style: none; padding: 0; margin: 0;">
