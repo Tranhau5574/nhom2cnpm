@@ -67,6 +67,8 @@ pageEncoding="UTF-8"%>
         height: 2px;
         width: 50%;
         background-color: black;
+        margin-bottom: 5px;
+        margin-top: 10px;
         transform: translateX(50%); /* Duy trì độ chính xác trung tâm */
       }
       a {
