@@ -48,10 +48,13 @@ public class Login_Register_Controller {
             User currentUser = (user_UserDetails_Service.findByUsername(currentUserName)).get(); 
             session.setAttribute("currentUser", currentUser);
             if((currentUser.getRoles()).size() == 1){
+                if(currentUser.getRoles().iterator().next().getId() == 1){
+                    return "redirect:/admin";
+                }
                 return "redirect:/";
             }
             else{
-                return "redirect:/";
+                return "chooseRole";
             }
         }
     }

@@ -22,9 +22,36 @@
 </head>
 
 <body>
+<!-- nav bar -->
+<!-- end of navbar -->
 
-
+<br><br><br>
+<div class="container">
+    <h2>Oi ban oi ban la admin day ah, gke du z</h2>
+    <div>
+        Xem ty phim khong ban ei:
+    </div>
+    <a href="/admin/movie" 
+    class="btn btn-outline-danger btn-block">Danh sach phim</a>
+    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<div>Ban non nhu 1 con cho z</div>
 </div>
+
+
+
 <br>
 <br>
 <br>

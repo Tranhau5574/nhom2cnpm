@@ -40,21 +40,40 @@
                         <div style="margin-right: 100;">${date}</div>                           
                     </th>
                     <td>
-                        <a href="/admin/schedule/deleteDate?movieId=${movie.id}&date=${date}" class="btn btn-outline-danger btn-block">Xoa tat ca lich trong ngay</a>
+                        <a href="/admin/schedule/deleteDate?movieId=${movie.id}&date=${date}" 
+                        class="btn btn-outline-danger btn-block">Xoa tat ca lich trong ngay</a>
                     </td>
                     <td>
-                        <a href="/admin/schedule/changeDate?movieId=${movie.id}&date=${date}" class="btn btn-outline-danger btn-block">Xem lich chieu trong ngay</a>
+                        <a href="/admin/schedule/time?movieId=${movie.id}&date=${date}" 
+                        class="btn btn-outline-danger btn-block">Xem lich chieu trong ngay</a>
                     </td>
                 </tr>
             </table>
         </c:forEach>  
         
     </div>
-    <br><br>
-    <a href="/admin/addDate" class="btn btn-outline-danger btn-block">Them ngay chieu</a>
-    <br>
+</div>
+
+<br><br>
+<br>
+<br>
+<div class="container">
+
+    <form action="/admin/schedule/addDate" method="post">
+        <h2>Them ngay moi (yyyy-MM-dd):</h2>
+        <div class="message">${error}</div>
+        <br>
+        <input type="hidden" name="movieId" value="${movie.id}">
+
+        <input type="date" class="btn-block" name="date" required>
+        
+        <br>
+        <input type="submit" class="btn btn-outline-danger btn-block">
+    </form>
 
 </div>
+
+<br>
 <br>
 <br>
 <br>

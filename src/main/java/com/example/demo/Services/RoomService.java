@@ -7,6 +7,8 @@ import com.example.demo.repositories.IRoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static org.mockito.ArgumentMatchers.refEq;
+
 import java.time.LocalDate;
 
 import java.util.List;
@@ -16,9 +18,13 @@ public class RoomService implements IRoomService{
     @Autowired
     private IRoomRepository roomRepository;
 
+    @Override
+    public Room findRoomById(Integer roomId) {
+       return roomRepository.findRoomById(roomId);
+    }
 
     @Override
-    public List<Room> getRooms(Integer movieId, Integer branchId, String startDate, String startTime) {
-        return roomRepository.getRoomByMovieAndSchedule(movieId, LocalDate.parse(startDate));
+    public List<Room> findAllRoom() {
+        return roomRepository.findAll();
     }
 }

@@ -3,8 +3,6 @@ package com.example.demo.controllers;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.Services.MovieService;
 import com.example.demo.Services.ScheduleService;
 import com.example.demo.entities.Movie;
-import com.example.demo.entities.Schedule;
 
 @Controller
 public class AdminController {
@@ -27,9 +24,14 @@ public class AdminController {
     ScheduleService scheduleService;
 
     @RequestMapping(value = "/admin", method = RequestMethod.POST)       
-    public String showPage(@RequestParam String roleSelected){
-        if(roleSelected == "option1") return "AdminPage";
+    public String roleChosen(@RequestParam String roleSelected){
+        if(roleSelected == "option1") return "admin";
         else return "redirect:/";
+    }
+
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)       
+    public String showAdminPage(){
+        return "admin";
     }
 
     @RequestMapping(value = "/admin/movie", method = RequestMethod.GET)
@@ -40,11 +42,14 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/schedule", method = RequestMethod.GET)
-    public String changeScheduleDate(@RequestParam("movieId") Integer movieId, Model model){
+    public String changeScheduleDate (@RequestParam("movieId") Integer movieId
+                                    , @RequestParam(value = "error", defaultValue = "") String error
+                                    , Model model){
         Movie movie = movieService.getMovieById(movieId);
         List<LocalDate> dateList = scheduleService.getStartDate(movieId);
         model.addAttribute("dateList", dateList);
         model.addAttribute("movie", movie);
-        return "change-date";
+        model.addAttribute("error", error);
+        return "admin-date";
     }
 }
