@@ -33,6 +33,6 @@ public class HomeController {
     @PostMapping("/")
     public String findMovies(Model model, HttpServletRequest request){
         model.addAttribute("movie", movieService.getMovieByName(request.getParameter("movie-name")));
-        return "homepage";
+        return "movie-details";
     }
 }

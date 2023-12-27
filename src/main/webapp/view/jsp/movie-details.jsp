@@ -37,30 +37,29 @@
             <img src="${movie.imgURL}" alt="anh phim" width="300px" height="400px">
             <a href="/user/chooseDate?movieId=${movie.id}" class="btn btn-danger btn-block" style="margin-top: 5px;">Mua Vé</a>
         </div>
-        <table>
-            <BR></BR>
+        <table>     
             <tr>
-                <th><h6><b>TÊN PHIM:</b></h6></th>
+                <th> TÊN PHIM: </th>
                 <th>${movie.name}</th>
             </tr>
             <tr>
-                <th><h6><b>ĐẠO DIỄN:</b></h6></th>
+                <th> ĐẠO DIỄN: </th>
                 <th>${movie.director}</th>
             </tr>
             <tr>
-                <th><h6><b>DIỄN VIÊN:</b></h6></th>
+                <th> DIỄN VIÊN: </th>
                 <th>${movie.actors}</th>
             </tr>
             <tr>
-                <th><h6><b>NGÀY KHỞI CHIẾU:</b></h6></th>
+                <th> NGÀY KHỞI CHIẾU: </th>
                 <th>${movie.releaseDate}</th>
             </tr>
             <tr>
-                <th><h6><b>THỂ LOẠI:</b></h6></th>
+                <th> THỂ LOẠI: </th>
                 <th>${movie.categories}</th>
             </tr>
             <tr>
-                <th><h6><b>THỜI LƯỢNG:</b></h6></th>
+                <th> THỜI LƯỢNG: </th>
                 <th>${movie.length} phút</th>
             </tr>
         </table>

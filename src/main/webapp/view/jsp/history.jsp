@@ -53,10 +53,9 @@
                     <td>${ticket.schedule.room.id}</td>
                     <td>${ticket.seat.name}</td>
                     <td>${ticket.bill.createdTime}</td>
-                    <td><img src="${ticket.qrImageURL}"></td>
+                    <td><img src="/image/qrCode.png" height="50px" width="50px"></td>
                 </tr>
             </c:forEach>
-
 
         </table>
 

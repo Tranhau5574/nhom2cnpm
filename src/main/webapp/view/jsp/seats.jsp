@@ -70,7 +70,7 @@
             <table style="width:100%">
 
             <!-- tạo stt cho hàng -->
-                <tr>
+                <tr style="text-align: center ;">
                     <th></th>
                     <th>1</th>
                     <th>2</th>

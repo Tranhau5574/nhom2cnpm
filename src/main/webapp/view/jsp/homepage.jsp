@@ -228,8 +228,7 @@
 <div class="container">
     <jsp:include page="header.jsp"/>
     <br>
-    <br>
-    <h2><b>PHIM MỚI CHIẾU</b></h2>
+    <h1><b>Phim mới chiếu</b></h1>
     <div id="demo" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">
             <li data-target="#demo" data-slide-to="0" class="active"></li>

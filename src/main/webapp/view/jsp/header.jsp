@@ -132,7 +132,7 @@
                 </c:when>
             <c:otherwise>
                 <ul style="list-style: none; padding: 0; margin: 0;">
-                    <li><p style="color: gold;text-align: center;justify-content: center;">Hello ${sessionScope.currentUser.username}</p></li>
+                    <li><p style="color: gold;text-align: center;justify-content: center;height: 11px;">Hello ${sessionScope.currentUser.username}</p></li>
                     <br>
                     <li><a href="/logout" class="logout-btn" style="height:30px;">Đăng xuất</a></li>
                 </ul>
