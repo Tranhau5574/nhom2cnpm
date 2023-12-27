@@ -11,7 +11,9 @@ import com.example.demo.repositories.IScheduleRepository;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -35,10 +37,14 @@ public class ScheduleService implements IScheduleService {
 
     @Override
     public List<String> getStartTimes(Integer movieId, LocalDate startDate) {
-        return (scheduleRepository.getStartTimeByMovie_IdAndStartDate(movieId, startDate))
-                .stream()
+        // if(scheduleRepository.getStartTimeByMovie_IdAndStartDate(movieId, startDate).size() == 0){
+        //     System.out.println("buoc3");
+        //     return new ArrayList<String>();
+        // }
+            return (scheduleRepository.getStartTimeByMovie_IdAndStartDate(movieId, startDate))
+                .stream().filter(Objects::nonNull)
                 .map(localTime -> localTime.format(DateTimeFormatter.ofPattern("HH:mm")))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());  
     }
 
     @Override
@@ -75,8 +81,19 @@ public class ScheduleService implements IScheduleService {
             newSchedule.setStartDate(LocalDate.parse(date));
             return scheduleRepository.save(newSchedule);
         }
-
     }
+
+    @Override
+    public Schedule save(String date, String time, double price, Integer movieId, Integer roomId) {
+        Schedule newSchedule = new Schedule();
+        newSchedule.setMovie(movieService.getMovieById(movieId));
+        newSchedule.setPrice(price);
+        newSchedule.setStartDate(LocalDate.parse(date));
+        newSchedule.setStartTime(LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm")));
+        newSchedule.setRoom(roomService.findRoomById(roomId));
+        return scheduleRepository.save(newSchedule);
+    }
+
     @Override
     public List<Schedule> getSchedulesByMovie_IdAndStartDate(Integer movieId, String startDate) {
         return scheduleRepository.getSchedulesByMovie_IdAndStartDate(movieId ,LocalDate.parse(startDate));
@@ -89,6 +106,5 @@ public class ScheduleService implements IScheduleService {
                         , LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm"))
                         , roomId);
     }
-
 }
 

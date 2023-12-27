@@ -3,6 +3,7 @@ package com.example.demo.entities;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,6 +29,8 @@ public class Schedule {
     private int id;
     private LocalDate startDate;
     private LocalTime startTime;
+
+    @Column(name = "price", nullable = true)
     private double price;
     
     @ManyToOne
@@ -36,7 +39,7 @@ public class Schedule {
     private Movie movie;
 
     @OneToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "room_id", nullable = true)
     private Room room;
 }

@@ -27,12 +27,12 @@
 
 <br><br><br>
 <div class="container">
-    <h2>Oi ban oi ban la admin day ah, gke du z</h2>
+    <h2>ôi bạn ơi bạn là admin đấy ah, gkê dử z</h2>
     <div>
-        Xem ty phim khong ban ei:
+        Xem tý phim không bạn ei:
     </div>
     <a href="/admin/movie" 
-    class="btn btn-outline-danger btn-block">Danh sach phim</a>
+    class="btn btn-outline-danger btn-block">Danh sách phim:</a>
     <br>
 <br>
 <br>
@@ -47,7 +47,7 @@
 <br><br>
 <br>
 <br>
-<div>Ban non nhu 1 con cho z</div>
+<div>Bạn non như 1 con chó z</div>
 </div>
 
 
