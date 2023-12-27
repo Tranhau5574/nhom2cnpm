@@ -27,7 +27,7 @@
 
 <br><br><br>
 <div class="container">
-    <h2>Cac ngay chieu cua phim:<br> ${movie.name}</h2>
+    <h2>Các ngày chiếu của phim:<br> ${movie.name}</h2>
     
     <br>
 
@@ -41,11 +41,11 @@
                     </th>
                     <td>
                         <a href="/admin/schedule/deleteDate?movieId=${movie.id}&date=${date}" 
-                        class="btn btn-outline-danger btn-block">Xoa tat ca lich trong ngay</a>
+                        class="btn btn-outline-danger btn-block">Xoá tất cả lịch trong ngày</a>
                     </td>
                     <td>
                         <a href="/admin/schedule/time?movieId=${movie.id}&date=${date}" 
-                        class="btn btn-outline-danger btn-block">Xem lich chieu trong ngay</a>
+                        class="btn btn-outline-danger btn-block">Xem lịch chiếu trong ngày</a>
                     </td>
                 </tr>
             </table>
@@ -60,7 +60,7 @@
 <div class="container">
 
     <form action="/admin/schedule/addDate" method="post">
-        <h2>Them ngay moi (yyyy-MM-dd):</h2>
+        <h2>Thêm ngày mới (yyyy-MM-dd):</h2>
         <div class="message">${error}</div>
         <br>
         <input type="hidden" name="movieId" value="${movie.id}">

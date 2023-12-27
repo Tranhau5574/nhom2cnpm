@@ -86,7 +86,7 @@ public class ScheduleController {
         } catch (RuntimeException e) {
             error = e.getMessage();
         }
-        return "redirect:/admin/schedule?movieId=" + movieId + "error=" + error;
+        return "redirect:/admin/schedule?movieId=" + movieId + "&error=" + error;
     }
 
     @RequestMapping(value = "/admin/schedule/time", method = RequestMethod.GET)
@@ -108,11 +108,12 @@ public class ScheduleController {
                         , @RequestParam("date") String date
                         , @RequestParam("roomId") Integer roomId
                         , @RequestParam("time") String time
-                        , @RequestParam("price") Integer price
+                        , @RequestParam("price") double price
                         , Model model){
 
         String error = "";
         List<String> listStartTime = scheduleService.getStartTimes(movieId, LocalDate.parse(date));
+        System.out.println("buoc4");
         Optional<Schedule> scheduleAtTheTimeAndRoom = scheduleService.findScheduleByRoomAndTimeAndDate(date, time, roomId);    
         if(listStartTime.contains(time)){
             error += "Đã tồn tại giờ chiếu(Tại 1 thời điểm, 1 phim chỉ được chiếu tại 1 phòng :3)";
@@ -120,7 +121,10 @@ public class ScheduleController {
         if (scheduleAtTheTimeAndRoom.isPresent()) {
             error = "Đã tồn tại lịch phim tại phòng này, tại cùng thời điểm";
         }
-        return "/admin/schedule/time?movieId="+ movieId + "&date=" + date + "&error" + error;                   
+        else{
+            Schedule newSchedule = scheduleService.save(date, time, price, movieId, roomId);
+        }
+        return "redirect:/admin/schedule/time?movieId="+ movieId + "&date=" + date + "&error" + error;                   
     }
 
     @RequestMapping(value = "/admin/schedule/time/delete", method = RequestMethod.GET)
@@ -128,6 +132,6 @@ public class ScheduleController {
                             , @RequestParam("movieId") Integer movieId
                             , @RequestParam("date") String date){
         scheduleService.deleteById(scheduleId);
-        return "/admin/schedule/time?movieId="+ movieId + "&date=" + date;
+        return "redirect:/admin/schedule/time?movieId="+ movieId + "&date=" + date;
     }
 }

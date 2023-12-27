@@ -24,20 +24,19 @@
 <body>
     <br><br><br>
     <div class="container">
-        <h2>Cac lịch chiếu của phim:<br> ${movie.name}</h2>
-        <h2>Trong ngày<br> ${date}</h2>
+        <h2>Các lịch chiếu của phim: <br> ${movie.name}</h2>
+        <h2>Trong ngày: <br> ${date}</h2>
         
         <br>
     
         <div style="display: flex;">
-            
-            <c:forEach items="${listSchedules}" var="schedule">
-                <table>    
+            <table>   
+                <c:forEach items="${listSchedules}" var="schedule">       
                     <tr>
                         <th>
-                            <div style="margin-right: 100;">${schedule.startTime}</div>
+                            <div style="margin-right: 100;">Thời gian chiếu: ${schedule.startTime}</div>
                             <br>
-                            <div style="margin-right: 100;">${schedule.room.id}</div>                            
+                            <div style="margin-right: 100;">Số phòng       : ${schedule.room.id}</div>                            
                         </th>
                         <td>
                             <a href="/admin/schedule/time/delete?movieId=${movie.id}&date=${date}&scheduleId=${schedule.id}" 
@@ -45,9 +44,11 @@
                         </td>
                     </tr>
                     <br>
-                </table>
-            </c:forEach>  
-            
+                    <tr><br><br></tr>
+                    <br>
+                    <br>
+                </c:forEach>  
+            </table>
         </div>
     </div>
     <br>

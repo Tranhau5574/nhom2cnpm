@@ -27,7 +27,7 @@
 
 <br><br><br>
 <div class="container">
-    <h2>Sua lich chieu</h2>
+    <h2>Sửa lịch chiếu</h2>
     
     <br>
 
@@ -45,7 +45,7 @@
         
     </div>
     <br><br>
-    <a href="/admin/addMovie" class="btn btn-outline-danger btn-block">Them phim</a>
+    <a href="/admin/addMovie" class="btn btn-outline-danger btn-block">Thêm phim</a>
     <br>
 
 </div>

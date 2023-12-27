@@ -23,6 +23,8 @@ public interface IScheduleService {
 
     Schedule saveNewDate(String date, Integer movieId);
 
+    Schedule save(String date, String time, double price, Integer movieId, Integer roomId);
+
     List<Schedule> getSchedulesByMovie_IdAndStartDate(Integer movieId, String startDate);
 
     Optional<Schedule> findScheduleByRoomAndTimeAndDate(String date, String time, Integer roomId);
