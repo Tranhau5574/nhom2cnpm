@@ -5,6 +5,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HUSTCINEMA</title>
@@ -27,13 +28,22 @@
         .logo-container {
             display: flex;
             align-items: center;
-            
+            line-height: 0.5;
+            text-align: center;
+            .logo {
+                width: 55px;
+                height: 55px;
+                margin-bottom: 12px;
+                border-radius: 15px 15px 15px 15px;
+            }
         }
-        .logo-container .logo {
-            border-radius: 15px 15px 15px 15px;
-      
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+          }
+        
 
-        }
+        
         .las la-film {
             width: 40px;
             height: 40px;
@@ -41,8 +51,10 @@
         }
 
         .site-name {
-            font-size: 2.5em;
+            font-size: 35px;
             font-weight: bold;
+            text-align: left;
+            font-family: "Time New Roman"
         }
 
         .menu {
@@ -98,8 +110,26 @@
         .logout-btn{
             background-color: rgb(202, 26, 26);
         }
-
-
+        .NavBar_loginBtn__5DxZL {
+            background: linear-gradient(to right bottom,#ff8f26,#ff5117);
+            border-radius: 99px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 9px 20px;
+            transition: opacity .25s;
+        }
+        .NavBar_registerBtn__bQERL {
+            background: linear-gradient(to right bottom,#ff8f26,#ff5117);
+            border-radius: 99px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 9px 20px;
+            transition: opacity .25s;
+        }
         /* Add padding to the content to avoid it being hidden under the fixed navbar */
         .content {
             padding-top: 60px;
@@ -109,8 +139,11 @@
 <body>
     <nav>
         <div class="logo-container">
-            <img src="/image/H.png" alt="..." class="logo">
-            <div class="site-name">HUSTCINEMA</div>
+            <img src="https://res.cloudinary.com/ddfhkjugr/image/upload/v1703324741/H_ivhukm.png" href="/" alt="..." class="logo">
+            <div class="site-name">
+                <p>HUST</p>
+                <p >CINEMA</p> 
+                </div>
         </div>
         <div>
             <c:choose>
@@ -135,6 +168,9 @@
                         <li style="padding: 0 0 5px 0;"><a href="/login" class="login-btn" style="height:30px;">Đăng nhập</a></li>
                         <li><a href="/register" class="register-btn" style="height:30px;">Đăng ký</a></li>
                     </ul>
+                    <!-- <button  class="NavBar_loginBtn__5DxZL">
+                        <a href="/login"> Đăng nhập</a></button>
+                    <button class="NavBar_registerBtn__bQERL">Đăng ký</button> -->
                 </c:when>
             <c:otherwise>
                 <ul style="list-style: none; padding: 0; margin: 0;">
