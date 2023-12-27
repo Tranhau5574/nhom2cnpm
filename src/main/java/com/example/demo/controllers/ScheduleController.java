@@ -122,6 +122,7 @@ public class ScheduleController {
             error = "Đã tồn tại lịch phim tại phòng này, tại cùng thời điểm";
         }
         else{
+            //CHECKING...//
             Schedule newSchedule = scheduleService.save(date, time, price, movieId, roomId);
         }
         return "redirect:/admin/schedule/time?movieId="+ movieId + "&date=" + date + "&error" + error;                   
