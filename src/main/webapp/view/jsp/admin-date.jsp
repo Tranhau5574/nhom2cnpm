@@ -61,7 +61,7 @@
 
     <form action="/admin/schedule/addDate" method="post">
         <h2>Thêm ngày mới (yyyy-MM-dd):</h2>
-        <div class="message">${error}</div>
+        <div class="message" style="color: #ff0000;">${error}</div>
         <br>
         <input type="hidden" name="movieId" value="${movie.id}">
 

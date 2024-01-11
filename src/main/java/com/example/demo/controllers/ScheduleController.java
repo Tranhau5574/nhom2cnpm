@@ -100,6 +100,7 @@ public class ScheduleController {
         model.addAttribute("movie", movieService.getMovieById(movieId));
         model.addAttribute("date", date);
         model.addAttribute("listRoom", roomService.findAllRoom());
+        model.addAttribute("error", error);
         return "admin-time-room";
     }
 
@@ -115,17 +116,19 @@ public class ScheduleController {
         List<String> listStartTime = scheduleService.getStartTimes(movieId, LocalDate.parse(date));
         System.out.println("buoc4");
         Optional<Schedule> scheduleAtTheTimeAndRoom = scheduleService.findScheduleByRoomAndTimeAndDate(date, time, roomId);    
+        System.out.println("buoc5");
         if(listStartTime.contains(time)){
-            error += "Đã tồn tại giờ chiếu(Tại 1 thời điểm, 1 phim chỉ được chiếu tại 1 phòng :3)";
+            System.out.println("Đã tồn tại giờ chiếu(Tại 1 thời điểm, 1 phim chỉ được chiếu tại 1 phòng :3");
+            error = "NGU_VL_DCM_THANG_ADMIN_BU_CAC";
         }
         if (scheduleAtTheTimeAndRoom.isPresent()) {
-            error = "Đã tồn tại lịch phim tại phòng này, tại cùng thời điểm";
+            error = "NGU_VL_DCM_THANG_ADMIN_BU_CAC";
         }
         else{
             //CHECKING...//
             Schedule newSchedule = scheduleService.save(date, time, price, movieId, roomId);
         }
-        return "redirect:/admin/schedule/time?movieId="+ movieId + "&date=" + date + "&error" + error;                   
+        return "redirect:/admin/schedule/time?movieId="+ movieId + "&date=" + date + "&error=" + error ;                   
     }
 
     @RequestMapping(value = "/admin/schedule/time/delete", method = RequestMethod.GET)
