@@ -1,7 +1,5 @@
 package com.example.demo.IServices;
 
-
-import com.example.demo.entities.Movie;
 import com.example.demo.entities.Schedule;
 
 import java.time.LocalDate;
