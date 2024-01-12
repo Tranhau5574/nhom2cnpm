@@ -29,9 +29,15 @@ public class AdminController {
         else return "redirect:/";
     }
 
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)       
+    @RequestMapping(value = "/admin", method = RequestMethod.GET) 
+    public String getMoviesByID(Model model) {
+        List<Movie> movieList = movieService.findAll();
+        model.addAttribute("movies", movieList);
+        return "/admin";
+
+    }      
     public String showAdminPage(){
-        return "admin";
+        return "/admin";
     }
 
     @RequestMapping(value = "/admin/movie", method = RequestMethod.GET)

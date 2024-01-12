@@ -224,10 +224,10 @@
 
 <body>
 
-
 <div class="container">
+
     <jsp:include page="header.jsp"/>
-    <br>
+    <br><br>
     <h1><b>Phim mới chiếu</b></h1>
     <div id="demo" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">
@@ -255,6 +255,10 @@
                         </div>
                     </c:otherwise>
                 </c:choose>
+                <!-- <div class="carousel-item">
+                    <img src="${movie.posterURL}"
+                         alt="..." >
+                </div> -->
             </c:forEach>
         </div>
 
@@ -279,6 +283,7 @@
                 </button>
             </form>
         </div>
+        
         <div class="d-flex justify-content-between flex-wrap">
             <c:forEach items="${movies}" var="movie">
                     <div class="card" style="width: 300px;">

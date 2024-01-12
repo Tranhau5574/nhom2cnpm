@@ -22,7 +22,7 @@
     </style>
 </head>
 
-<body>
+<body style="font-family: Arial, sans-serif;">
     <jsp:include page="header.jsp"/>
 <!-- nav bar -->
 
@@ -37,6 +37,7 @@
             <img src="${movie.imgURL}" alt="anh phim" width="300px" height="400px">
             <a href="/user/chooseDate?movieId=${movie.id}" class="btn btn-danger btn-block" style="margin-top: 5px;">Mua Vé</a>
         </div>
+<<<<<<< HEAD
         <table>     
             <tr>
                 <th> TÊN PHIM: </th>
@@ -63,21 +64,54 @@
                 <th>${movie.length} phút</th>
             </tr>
         </table>
+=======
+        <div> 
+            <h3>
+                <b>${movie.name}</b>
+            </h3>
+            <p>${movie.shortDescription}</p>
+            <table>
+                <BR></BR>
+                <tr>
+                    <th><h6><b>ĐẠO DIỄN:</b></h6></th>
+                    <th>${movie.director}</th>
+                </tr>
+                <tr>
+                    <th><h6><b>DIỄN VIÊN:</b></h6></th>
+                    <th>${movie.actors}</th>
+                </tr>
+                <tr>
+                    <th><h6><b>NGÀY KHỞI CHIẾU:</b></h6></th>
+                    <th>${movie.releaseDate}</th>
+                </tr>
+                <tr>
+                    <th><h6><b>THỂ LOẠI:</b></h6></th>
+                    <th>${movie.categories}</th>
+                </tr>
+                <tr>
+                    <th><h6><b>THỜI LƯỢNG:</b></h6></th>
+                    <th>${movie.length} phút</th>
+                </tr>
+            </table>
+        </div>
+>>>>>>> 710bb24c664c291cc9bca4a668937378e8e24c62
 
 
     </div>
     <br>
     <br>
-    <div style="display:flex;">
-        <div style="margin-right: 50px">
-            <h1>Trailer:</h1>
-            <iframe width="560" height="315" src="${movie.trailerURL}"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; gyroscope; picture-in-picture"
-                    allowfullscreen>
+    <div style="display: flex; background-color: rgb(38, 38, 59); justify-content: center; align-items: center;">
+        <div>
+            <h2 style="text-align: center; color: beige"><b>TRAILER</b></h2>
+            <iframe style="border-radius: 15px; border: 3px solid rgb(118, 116, 116);" width="560" height="315" src="${movie.trailerURL}"
+               title="YouTube video player" frameborder="0"
+               allow="accelerometer; autoplay; clipboard-write; gyroscope; picture-in-picture"
+               allowfullscreen>
             </iframe>
         </div>
-    </div>
+     </div>
+     
+     
     <br>
 
     <br>

@@ -103,7 +103,7 @@ public class Login_Register_Controller {
         }
         catch (Exception e){
             model.addAttribute("message", e.getMessage());
-            return "register";
+            return "signup";
         }
     }
 }
