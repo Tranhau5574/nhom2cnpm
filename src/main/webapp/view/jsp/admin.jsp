@@ -223,10 +223,9 @@
 </head>
 
 <body>
-
+<jsp:include page="admin-header.jsp"/>
 <div class="container">
 
-    <jsp:include page="admin-header.jsp"/>
     <br>
 
     <br>
