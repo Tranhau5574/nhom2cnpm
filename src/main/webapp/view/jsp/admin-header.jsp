@@ -1,4 +1,4 @@
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -134,48 +134,32 @@
         .content {
             padding-top: 60px;
         }
-
-        .image-link {
-        display: inline-block;
-        overflow: hidden;
-        position: relative; /* Để có thể sử dụng position:absolute cho child */
-        }
-
-        .image-link img {
-        width: 100%; /* Hình ảnh chiếm đầy đủ chiều rộng của phần tử cha */
-        height: auto; /* Giữ tỉ lệ khung hình ảnh */
-        display: block; /* Loại bỏ khoảng trắng dư thừa dưới hình ảnh */
-        }
-
-        .image-link a {
-        position: absolute; /* Tạo một lớp trên hình ảnh */
-        top: 0;
-        left: 0;
-        width: 100%; /* Chiều rộng của thẻ a bằng với hình ảnh */
-        height: 100%; /* Chiều cao của thẻ a bằng với hình ảnh */
-        text-decoration: none; /* Loại bỏ gạch chân đường liên kết */
-        }
     </style>
 </head>
 <body>
     <nav>
         <div class="logo-container">
-            <img src="https://res.cloudinary.com/ddfhkjugr/image/upload/v1703324741/H_ivhukm.png" alt="logoHustCinema" class="logo">    
+            <img src="https://res.cloudinary.com/ddfhkjugr/image/upload/v1703324741/H_ivhukm.png" href="/" alt="..." class="logo">
             <div class="site-name">
                 <p>HUST</p>
-                <p>CINEMA</p> 
-            </div>
-            
+                <p >CINEMA</p> 
+                </div>
         </div>
-        
         <div>
-            <ul class="menu">
-                <li><a href="/" >Trang chủ</a></li>
-                <li><a href="/user/tickets/history">Lịch sử mua</a></li>
-                <li><a href="#" >Cá nhân</a></li>
-                <li><a href="#" >Ưu đãi</a></li>
-                
-            </ul>
+            <c:choose>
+                <c:when test="${sessionScope.currentUser eq null}">
+    
+                </c:when>
+                <c:otherwise>
+                    <ul class="menu">
+                        <li><a href="/admin">Trang chủ</a></li>
+                        <li><a href="/admin/movie" >Phim</a></li>
+                        <li><a href="#" >Đồ ăn</a></li>
+                        <li><a href="#" >Ưu đãi</a></li>
+                    </ul>
+                </c:otherwise>
+            </c:choose>
+            
         </div>
         
         <div class="buttons">
@@ -186,19 +170,17 @@
                         <li><a href="/register" class="register-btn" style="height:30px;">Đăng ký</a></li>
                     </ul>
                 </c:when>
-                <c:otherwise>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li>
-                            <p>
-                                <span style="color: white;" >Hello</span>
-                                <span style="color: gold;">${sessionScope.currentUser.username} </span> 
-                            </p>
-                        </li>
-                        <br>
-                        <li><a href="/logout" class="logout-btn" style="height:30px;">Đăng xuất</a></li>
-                    </ul>
-                </c:otherwise>
-            </c:choose>
+            <c:otherwise>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li>
+                        <span style="color: white;" >Hi</span>
+                        <span style="color: gold;">${sessionScope.currentUser.username} </span>     
+                    </li>
+                    <br>
+                    <li><a href="/logout" class="logout-btn" style="height:30px;">Đăng xuất</a></li>
+                </ul>
+            </c:otherwise>
+        </c:choose>
             
         </div>
     </nav>

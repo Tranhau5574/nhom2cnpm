@@ -25,24 +25,24 @@
 <div class="container">
 
     <form action="/admin/addMovie" method="post">
-        <h2>Them phim moi</h2>
+        <h2>Thêm phim mới</h2>
         <br>
-        <p>Ten phim</p>
+        <p>Tên phim</p>
         <input type="text" class="btn-block" name="name" required>
         <br><br>
-        <p>Do dai phim</p>
+        <p>Độ dài phim (phút)</p>
         <input type="number" class="btn-block" name="length" required>
         <br><br>
-        <p>Dao dien</p>
+        <p>Đạo diễn</p>
         <input type="text" class="btn-block" name="director" required>
         <br><br>
-        <p>Danh sach dien vien chinh</p>
+        <p>Danh sách diễn viên chính</p>
         <input type="text" class="btn-block" name="actors" required>
         <br><br>
-        <p>The loai</p>
+        <p>Thể loại</p>
         <input type="text" class="btn-block" name="categories" required>
         <br><br>
-        <p>Link anh nho</p>
+        <p>Link anh nhỏ</p>
         <input type="text" class="btn-block" name="imgURL" required>
         <br><br>
         <p>Link poster</p>
@@ -51,10 +51,10 @@
         <p>Link embed trailer</p>
         <input type="text" class="btn-block" name="trailerURL" required>
         <br><br>
-        <p>Ngay ra mat</p>
+        <p>Ngày ra mắt</p>
         <input type="date" class="btn-block" name="release-date" required>
         <br><br>
-        <p>Mo ta phim</p>
+        <p>Mô tả phim</p>
         <input type="text" class="btn-block" name="short-description" required>
         <br><br>
 

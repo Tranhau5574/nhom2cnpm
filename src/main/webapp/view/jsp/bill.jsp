@@ -29,30 +29,30 @@
 <br><br><br>
 <div class="container">
         <h2>Thanh toán hóa đơn</h2>
-        <div style="display:flex; justify-content: center;">
-            <table>
+        <div  style="display:flex; justify-content: center;">
+            <table >
                 <tr>
-                    <th><b>Tên phim: </b></th>
+                    <th>TÊN PHIM:</th>
                     <th>${sessionScope.chosenSchedule.movie.name}</th>
                 </tr>
                 <tr>
-                    <th><b>Giờ chiếu:</b></th>
+                    <th>GIỜ CHIẾU:</th>
                     <th>${sessionScope.chosenSchedule.startTime}</th>
                 </tr>
                 <tr>
-                    <th><b>Ngày Chiếu:</b></th>
+                    <th>NGÀY CHIẾU:</th>
                     <th>${formattedDate}</th>
                 </tr>
                 <tr>
-                    <th><b>Tên Phòng:</b></th>
+                    <th>TÊN PHÒNG:</th>
                     <th>${sessionScope.chosenSchedule.room.id}</th>
                 </tr>
                 <tr>
-                    <th><b>Số Vé:</b></th>
+                    <th>SỐ VÉ</th>
                     <th>${numberOfSelectedSeats}</th>
                 </tr>
                 <tr>
-                    <th><b>Danh sách vé:</b></th>
+                    <th>DANH SÁCH VÉ</th>
                     <th>
                         <c:forEach items="${listSeats}" var="seat">
                         <div> | ${seat} | </div>
@@ -60,16 +60,16 @@
                     </th>
                 </tr>
                 <tr>
-                    <th><b>Tiền Vé Đơn:</b></th>
+                    <th>TIỀN VÉ ĐƠN:</th>
                     <th>${sessionScope.chosenSchedule.price}</th>
                 </tr>
                 <tr>
-                    <th><b>Tổng:</b></th>
+                    <th>TỔNG:</th>
                     <th>${totalAmount}</th>
                 </tr>
             </table>
             <div style="margin-left:50px">
-                <img src="${sessionScope.chosenSchedule.movie.imgURL}" alt="" width="350px" height="550px">
+                <img src="${sessionScope.chosenSchedule.movie.imgURL}" alt="" width="350px" height="500px">
             </div>
         </div>
 

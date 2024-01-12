@@ -22,8 +22,8 @@
 </head>
 
 <body>
-<!-- nav bar -->
-<!-- end of navbar -->
+
+<jsp:include page="admin-header.jsp"/>
 
 <br><br><br>
 <div class="container">
@@ -33,20 +33,22 @@
 
     <div style="display:flex">
         <table>
+
             <c:forEach items="${movieList}" var="movie">
                 <tr>
-                    <th>${movie.id}</th>
                     <th>${movie.name}</th>
-                    <th><a href="/admin/schedule?movieId=${movie.id}" class="btn btn-outline-danger btn-block">Thay doi lich chieu</a></th>
+                    <th><a href="/admin/schedule?movieId=${movie.id}" class="btn btn-outline-info btn-block">Thay doi lich chieu</a></th>
                     <th><a href="/admin/deleteMovie?movieId=${movie.id}" class="btn btn-outline-danger btn-block">Xoa phim</a></th>
                 </tr>
             </c:forEach>  
+            <br>
+            <th>
+                <a href="/admin/addMovie" class="btn btn-outline-success btn-block">Thêm phim</a>
+            </th>
         </table>
         
     </div>
     <br><br>
-    <a href="/admin/addMovie" class="btn btn-outline-danger btn-block">Thêm phim</a>
-    <br>
 
 </div>
 <br>
@@ -56,3 +58,6 @@
 </body>
 
 </html>
+
+
+
