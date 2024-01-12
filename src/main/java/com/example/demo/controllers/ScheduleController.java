@@ -84,7 +84,7 @@ public class ScheduleController {
         try {
             Schedule newSchedule = scheduleService.saveNewDate(date, movieId);
         } catch (RuntimeException e) {
-            error = e.getMessage();
+            error = "error_1";
         }
         return "redirect:/admin/schedule?movieId=" + movieId + "&error=" + error;
     }
@@ -100,7 +100,12 @@ public class ScheduleController {
         model.addAttribute("movie", movieService.getMovieById(movieId));
         model.addAttribute("date", date);
         model.addAttribute("listRoom", roomService.findAllRoom());
-        model.addAttribute("error", error);
+        if(error.equals("error_2")){
+            model.addAttribute("errorMessage", "Đã tồn tại giờ chiếu(Tại 1 thời điểm, 1 phim chỉ được chiếu tại 1 phòng :3");
+        }
+        else if(error.equals("error_3")){
+            model.addAttribute("errorMessage", "Phòng đã có phim chiếu vào thời gian này");
+        }
         return "admin-time-room";
     }
 
@@ -119,10 +124,10 @@ public class ScheduleController {
         System.out.println("buoc5");
         if(listStartTime.contains(time)){
             System.out.println("Đã tồn tại giờ chiếu(Tại 1 thời điểm, 1 phim chỉ được chiếu tại 1 phòng :3");
-            error = "NGU_VL_DCM_THANG_ADMIN_BU_CAC";
+            error = "error_2";
         }
         if (scheduleAtTheTimeAndRoom.isPresent()) {
-            error = "NGU_VL_DCM_THANG_ADMIN_BU_CAC";
+            error = "error_3";
         }
         else{
             //CHECKING...//

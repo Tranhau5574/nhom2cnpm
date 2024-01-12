@@ -60,7 +60,7 @@
 
         <form action="/admin/schedule/time" method="post">
             <h2>Thêm lịch:</h2>
-            <div class="message" style="color: #ff0000;">${error}</div>
+            <div class="message" style="color: #ff0000;">${errorMessage}</div>
             <br>
             <input type="hidden" name="movieId" value="${movie.id}">
             <input type="hidden" name="date" value="${date}">

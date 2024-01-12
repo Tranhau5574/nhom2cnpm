@@ -49,6 +49,9 @@ public class AdminController {
         List<LocalDate> dateList = scheduleService.getStartDate(movieId);
         model.addAttribute("dateList", dateList);
         model.addAttribute("movie", movie);
+        if(error.equals("error_1")){
+            model.addAttribute("errorMessage", "Ngày thêm bị trùng! Thử lại đcmnguvcl");
+        }
         model.addAttribute("error", error);
         return "admin-date";
     }
