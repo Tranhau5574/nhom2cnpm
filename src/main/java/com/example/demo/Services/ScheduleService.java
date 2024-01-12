@@ -73,7 +73,7 @@ public class ScheduleService implements IScheduleService {
     @Override
     public Schedule saveNewDate(String date, Integer movieId) throws RuntimeException {
         if(scheduleRepository.getStartDateByMovie_Id(movieId).contains(LocalDate.parse(date))){
-            throw new RuntimeException("Ngày đã tồn tại");
+            throw new RuntimeException("NGU_VL_DCM_THANG_ADMIN_BU_CAC");
         }
         else{
             Schedule newSchedule = new Schedule();
