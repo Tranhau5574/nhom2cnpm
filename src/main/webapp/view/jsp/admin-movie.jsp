@@ -27,23 +27,27 @@
 
 <br><br><br>
 <div class="container">
-    <h2>Sửa lịch chiếu</h2>
+    <h1><b>Danh sách phim</b></h1>
     
     <br>
 
-    <div style="display:flex">
+    <div style="display:flex; justify-content: center ;">
         <table>
 
             <c:forEach items="${movieList}" var="movie">
                 <tr>
                     <th>${movie.name}</th>
-                    <th><a href="/admin/schedule?movieId=${movie.id}" class="btn btn-outline-info btn-block">Thay doi lich chieu</a></th>
-                    <th><a href="/admin/deleteMovie?movieId=${movie.id}" class="btn btn-outline-danger btn-block">Xoa phim</a></th>
+                    <th><a href="/admin/schedule?movieId=${movie.id}" class="btn btn-outline-info btn-block"
+                        style="display:flex; align-items: center;justify-content: center;text-align: center;">Thay đổi lịch chiếu</a></th>
+                    <th><a href="/admin/deleteMovie?movieId=${movie.id}" class="btn btn-outline-danger btn-block"
+                        style="display:flex; align-items: center;justify-content: center;text-align: center;">Xóa phim</a></th>
                 </tr>
             </c:forEach>  
-            <br>
-            <th>
-                <a href="/admin/addMovie" class="btn btn-outline-success btn-block">Thêm phim</a>
+            
+            <th >
+                <br>
+                <a href="/admin/addMovie" class="btn btn-outline-success btn-block"
+                style="display:flex; align-items: center;justify-content: center;text-align: center;">Thêm phim</a>
             </th>
         </table>
         

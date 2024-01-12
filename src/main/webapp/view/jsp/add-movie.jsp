@@ -18,14 +18,14 @@
 
 <body>
 <!-- nav bar -->
-
+<jsp:include page="admin-header.jsp"/>
 <!-- end of navbar -->
 
 <br><br><br>
 <div class="container">
 
     <form action="/admin/addMovie" method="post">
-        <h2>Thêm phim mới</h2>
+        <h1><b>Thêm phim mới</b></h1>
         <br>
         <p>Tên phim</p>
         <input type="text" class="btn-block" name="name" required>

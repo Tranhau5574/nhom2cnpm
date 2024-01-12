@@ -22,10 +22,10 @@
 </head>
 
 <body>
+    <jsp:include page="admin-header.jsp"/>
     <br><br><br>
     <div class="container">
-        <h2>Các lịch chiếu của phim: <br> ${movie.name}</h2>
-        <h2>Trong ngày: <br> ${date}</h2>
+        <h2>Các lịch chiếu của <phim:br> <span style="color: blue;">${movie.name}</span>  ngày: <br> ${date}</h2>
         
         <br>
     
@@ -33,14 +33,14 @@
             <table>   
                 <c:forEach items="${listSchedules}" var="schedule">       
                     <tr>
-                        <th>
+                        <th style="margin-right: 200;">
                             <div style="margin-right: 100;">Thời gian chiếu: ${schedule.startTime}</div>
                             <br>
-                            <div style="margin-right: 100;">Số phòng       : ${schedule.room.id}</div>                            
+                            <div >Số phòng       : ${schedule.room.id}</div>                            
                         </th>
                         <td>
                             <a href="/admin/schedule/time/delete?movieId=${movie.id}&date=${date}&scheduleId=${schedule.id}" 
-                            class="btn btn-outline-danger btn-block">Xóa lịch</a>
+                            class="btn btn-outline-danger btn-block" style="margin-left: 100px;">Xóa lịch</a>
                         </td>
                     </tr>
                     <br>
@@ -81,7 +81,7 @@
             </select>
             
             <br>
-            <input type="submit" class="btn btn-outline-danger btn-block">
+            <input type="submit" class="btn btn-outline-primary btn-block">
         </form>
 
     </div>
