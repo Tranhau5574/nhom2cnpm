@@ -49,37 +49,38 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <body>
     <!-- nav bar -->
     <!-- end of navbar -->
-
+    <jsp:include page="admin-header.jsp"/>
     <br /><br /><br />
     <div class="container">
-      <h1>Welcome, <c:out value="${user.name}" /></h1>
       <h2>
-        Các ngày chiếu của phim:<br />
-        ${movie.name}
+        Các ngày chiếu của <phim:br></phim:br>
+        <span style="color: blue;">${movie.name}</span>
       </h2>
 
-      <br />
+      <br/>
 
-      <div style="display: flex">
+      <div style="display: block; ">
         <c:forEach items="${dateList}" var="date">
           <table>
             <tr>
               <th>
-                <div style="margin-right: 100">${date}</div>
+                <div style="margin-right: 100; color: #333;">${date}</div>
               </th>
+              <td>
+                <a
+                  href="/admin/schedule/time?movieId=${movie.id}&date=${date}"
+                  class="btn btn-outline-info btn-block"
+                  style="display: flex;justify-content: center; align-items: center;"
+                  >Xem lịch chiếu trong ngày
+                </a>
+              </td>
               <td>
                 <a
                   href="/admin/schedule/deleteDate?movieId=${movie.id}&date=${date}"
                   class="btn btn-outline-danger btn-block"
-                  >Xoá tất cả lịch trong ngày</a
-                >
-              </td>
-              <td>
-                <a
-                  href="/admin/schedule/time?movieId=${movie.id}&date=${date}"
-                  class="btn btn-outline-danger btn-block"
-                  >Xem lịch chiếu trong ngày</a
-                >
+                  style="display: flex;justify-content: center; align-items: center;"
+                  >Xoá tất cả lịch trong ngày
+                </a>
               </td>
             </tr>
           </table>
