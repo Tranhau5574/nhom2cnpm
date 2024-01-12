@@ -7,10 +7,6 @@ import com.example.demo.repositories.IRoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static org.mockito.ArgumentMatchers.refEq;
-
-import java.time.LocalDate;
-
 import java.util.List;
 
 @Service
